@@ -333,7 +333,7 @@ em { font-style: italic; }
 .cta-band {
   background: linear-gradient(135deg, #2D1B8C 0%, #0F0D1A 60%);
   color: var(--text-on-dark);
-  padding: var(--space-3xl) var(--space-xl);
+  padding: var(--space-2xl) var(--space-xl);
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
@@ -362,7 +362,10 @@ em { font-style: italic; }
 .hero {
   position: relative;
   overflow: hidden;
+  padding: var(--space-lg) 0 var(--space-xl);
 }
+.hero h1 { margin-bottom: var(--space-md); }
+.hero p   { margin-bottom: var(--space-lg); }
 .hero::before {
   content: '';
   position: absolute;
@@ -395,7 +398,7 @@ em { font-style: italic; }
 
 /* Section spacing */
 .section {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-2xl) 0;
 }
 .section-alt {
   background: var(--bg-subtle);
@@ -406,13 +409,13 @@ em { font-style: italic; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: var(--space-lg);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
 }
 .caps-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-md);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
 }
 
 /* Stack badges row */
@@ -426,17 +429,17 @@ em { font-style: italic; }
 /* Section header */
 .section-header {
   max-width: var(--text-width);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
-.section-header h2 { margin-top: var(--space-sm); }
-.section-header p { margin-top: var(--space-md); font-size: 1.05rem; }
+.section-header h2 { margin-top: var(--space-xs); }
+.section-header p { margin-top: var(--space-sm); font-size: 1.05rem; }
 
 /* Two track cards */
 .track-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-lg);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
 }
 @media (max-width: 768px) {
   .track-grid { grid-template-columns: 1fr; }
@@ -504,7 +507,7 @@ em { font-style: italic; }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
 }
 @media (max-width: 1024px) {
   .quad-grid { grid-template-columns: 1fr 1fr; }
@@ -566,7 +569,7 @@ em { font-style: italic; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
 }
 @media (max-width: 768px) {
   .steps-row { grid-template-columns: 1fr; gap: var(--space-lg); }
@@ -628,7 +631,7 @@ em { font-style: italic; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-xl);
 }
 @media (max-width: 768px) {
   .principles-grid { grid-template-columns: 1fr; }
