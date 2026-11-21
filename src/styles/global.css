@@ -193,6 +193,38 @@ em { font-style: italic; }
   background: rgba(255,255,255,0.2);
 }
 
+/* Hero action buttons */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+.hero-actions .btn-primary {
+  background: #1D4ED8;
+  color: #fff;
+}
+.hero-actions .btn-primary:hover {
+  background: #1E40AF;
+}
+.hero-actions .btn-outline {
+  color: #1D4ED8;
+  border-color: #1D4ED8;
+}
+.hero-actions .btn-outline:hover {
+  background: #EFF6FF;
+  color: #1E40AF;
+}
+.hero-actions .btn-dark {
+  background: #0F0D1A;
+  color: #fff;
+  border: 1px solid #0F0D1A;
+}
+.hero-actions .btn-dark:hover {
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+}
+
 /* Badge */
 .uc-badge {
   display: inline-block;
