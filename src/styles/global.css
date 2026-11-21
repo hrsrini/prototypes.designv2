@@ -443,16 +443,17 @@ em { font-style: italic; }
 }
 .track-card {
   background: var(--bg-white);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   text-decoration: none;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   display: block;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.06);
 }
 .track-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(91,60,245,0.10);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(91,60,245,0.12);
 }
 .track-card-label {
   font-family: var(--font-mono);
@@ -496,6 +497,68 @@ em { font-style: italic; }
   color: var(--accent);
   font-size: 0.9rem;
   font-weight: 500;
+}
+
+/* 4-column action grid */
+.quad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+@media (max-width: 1024px) {
+  .quad-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .quad-grid { grid-template-columns: 1fr; }
+}
+
+/* Action card */
+.action-card {
+  background: var(--bg-white);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.06);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.action-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(91,60,245,0.12);
+}
+.action-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+.action-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+.action-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: var(--space-lg);
+}
+.action-card-cta {
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-top: auto;
 }
 
 /* How we work steps */
