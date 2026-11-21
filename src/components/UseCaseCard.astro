@@ -1,0 +1,30 @@
+---
+interface Props {
+  badge: string;
+  title: string;
+  beforeLabel: string;
+  afterLabel: string;
+  beforeText: string;
+  afterText: string;
+  afterHighlight?: string;
+}
+const { badge, title, beforeLabel, afterLabel, beforeText, afterText, afterHighlight } = Astro.props;
+---
+
+<article class="use-case-card">
+  <div class="uc-header">
+    <span class="uc-badge">{badge}</span>
+    <h3>{title}</h3>
+  </div>
+  <div class="uc-comparison">
+    <div class="uc-before">
+      <span class="state-label before">{beforeLabel}</span>
+      <p>{beforeText}</p>
+    </div>
+    <div class="uc-after">
+      <span class="state-label after">{afterLabel}</span>
+      <p>{afterText}</p>
+      {afterHighlight && <p class="after-highlight">{afterHighlight}</p>}
+    </div>
+  </div>
+</article>

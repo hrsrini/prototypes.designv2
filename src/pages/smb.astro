@@ -1,0 +1,215 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import UseCaseCard from '../components/UseCaseCard.astro';
+import CapabilityCard from '../components/CapabilityCard.astro';
+import StackBadge from '../components/StackBadge.astro';
+
+const useCases = [
+  {
+    badge: 'Use Case 01',
+    title: 'Approval Chains That Don\'t Require Chasing',
+    beforeLabel: 'Before · Manual Approval Email',
+    afterLabel: 'After · Google Workspace Automated Flow',
+    beforeText: 'Approval requests buried in email threads. Approvers miss them. Submitters spend time following up. No visibility into where the request stands or who is responsible.',
+    afterText: 'Automated approval chain via Google Sheets and Gmail. Each approver receives a direct link with one-click approve or reject. Submitters see live status in a tracker sheet. Claude summarises the request in plain language for approvers with no prior context.',
+    afterHighlight: 'Average approval cycle cut from 4 days to same-day.'
+  },
+  {
+    badge: 'Use Case 02',
+    title: 'Document Submission Loops With Conditional Logic',
+    beforeLabel: 'Before · Manual Review Rounds',
+    afterLabel: 'After · Conditional Intake Automation',
+    beforeText: 'Reviewers receive incomplete submissions and must manually request the missing information. Each round trip adds days. No log of what was requested or when. Submitters unsure what is still outstanding.',
+    afterText: 'Submission form validates completeness before accepting. Conditional logic triggers targeted follow-up only for the specific missing fields. Full submission history and conversation log stored in Drive.',
+    afterHighlight: 'Re-submission cycles eliminated. First-time complete submissions significantly up.'
+  },
+  {
+    badge: 'Google Workspace Pattern 03',
+    title: 'Automation at Scale Without Hitting Platform Limits',
+    beforeLabel: 'Before · Quota Failures Mid-Run',
+    afterLabel: 'After · Batch Scheduled Execution',
+    beforeText: 'Apps Script quota limits hit mid-week on high-volume operations. Manual workarounds split work across multiple scripts with no central oversight. Failures silent until someone notices incorrect data.',
+    afterText: 'Batch scheduling spreads operations across time windows to stay within Google execution quotas. A single orchestration sheet controls batch size, timing, and retry logic. Errors surface to a monitor tab, not to end users.',
+    afterHighlight: 'Zero quota failures across a 10,000+ row weekly operation.'
+  },
+  {
+    badge: 'Google Workspace Pattern 04',
+    title: 'Single-Owner Data Integrity in Shared Sheets',
+    beforeLabel: 'Before · Multi-Editor Overwrites',
+    afterLabel: 'After · Row-Level Access Control',
+    beforeText: 'Multiple editors update a shared Sheet simultaneously. Formulas break, rows get deleted, audit trail is non-existent. Errors discovered days after they happen, with no record of who made what change.',
+    afterText: 'Edit permissions restricted per row to the designated owner. All changes logged with timestamp and user identity. Claude reviews anomalies and surfaces them in a morning summary email to the process owner.',
+    afterHighlight: 'Data integrity issues eliminated. Full audit log from day one.'
+  },
+  {
+    badge: 'Google Workspace Pattern 05',
+    title: 'Template-Driven Document Assembly',
+    beforeLabel: 'Before · Manual Copy-Paste Into Templates',
+    afterLabel: 'After · Automated Document Generation',
+    beforeText: 'Staff manually copy data from a tracker into document templates. Each document takes 15–20 minutes. Formatting inconsistencies are routine. High volume periods create a document production backlog.',
+    afterText: 'Claude reads row data and populates a Google Docs template via the Drive API. Output documents are formatted, named, and filed in the correct folder automatically. Batch runs handle entire datasets overnight.',
+    afterHighlight: '50-document batch processed in under 4 minutes.'
+  },
+  {
+    badge: 'Google Workspace Pattern 06',
+    title: 'Multi-State Workflow With Human Gates',
+    beforeLabel: 'Before · Status Column Updated Manually',
+    afterLabel: 'After · Enforced State Machine With Notifications',
+    beforeText: 'A five-stage process tracked in a spreadsheet with no enforcement. Stages skipped. Status updated manually and inconsistently. No notifications at stage transitions. Process compliance impossible to measure.',
+    afterText: 'Workflow state machine in Sheets enforces valid transitions. Claude validates each transition and blocks invalid ones with a clear explanation. Email notifications sent automatically at each gate. Process state visible to all stakeholders in real time.',
+    afterHighlight: 'Process compliance measurable for the first time.'
+  },
+  {
+    badge: 'Google Workspace Pattern 07',
+    title: 'Staged Approval With Conditional Escalation',
+    beforeLabel: 'Before · All Items Through the Same Path',
+    afterLabel: 'After · Two-Tier Routing With AI Triage',
+    beforeText: 'High-value and standard items follow the same approval path. Senior approvers bottlenecked by routine decisions. Escalation paths informal and inconsistent. No documentation of why something was escalated.',
+    afterText: 'First-stage approval handles standard cases automatically. Items above a defined threshold, or flagged by Claude as anomalous, escalate to senior approvers with a prepared summary and reasoning. Every escalation decision logged.',
+    afterHighlight: 'Senior approver workload reduced by 60%. Escalation path consistent and documented.'
+  },
+  {
+    badge: 'Google Workspace Pattern 08',
+    title: 'Design-Then-Execute Session Handoff',
+    beforeLabel: 'Before · Decisions Made Mid-Execution',
+    afterLabel: 'After · Confirmed Plan Before Any Code Runs',
+    beforeText: 'Configuration decisions made ad hoc during execution. Errors discovered mid-run require manual rollback. No record of what was decided or why. Repeating the run requires reconstructing the original intent.',
+    afterText: 'A design session produces a structured JSON plan reviewed and confirmed before any execution begins. Claude narrates the plan in plain English. Execution reads from the confirmed plan only. The session log is permanent.',
+    afterHighlight: 'Zero mid-run failures caused by unclear requirements.'
+  }
+];
+
+const capabilities = [
+  {
+    title: 'Batch Scheduling',
+    description: 'Spread high-volume Apps Script operations across time windows to stay within Google\'s execution quotas. A scheduler sheet controls batch size, timing, and retry logic. No manual splitting of jobs.'
+  },
+  {
+    title: 'Single-Owner Integrity',
+    description: 'Restrict edit access on shared Sheets to the designated row owner. All changes logged with user and timestamp. Prevents silent overwrites in multi-editor environments without locking down the entire file.'
+  },
+  {
+    title: 'Code Decides, AI Explains',
+    description: 'Deterministic Apps Script logic controls all branching and state transitions. Claude summarises decisions in plain language at each step. The automation is auditable; the explanation is readable.'
+  },
+  {
+    title: 'Low-Friction Intake',
+    description: 'Google Forms or a Sheets-based intake form captures structured input at the start of every workflow. Validation runs before data enters the pipeline. No incomplete records reaching downstream processes.'
+  },
+  {
+    title: 'Template-Driven Assembly',
+    description: 'Google Docs templates populated programmatically from Sheets data via the Drive API. Output documents formatted, named, and filed without manual intervention. Batch runs handle entire datasets in minutes.'
+  },
+  {
+    title: 'Multi-State Workflow',
+    description: 'Workflow state tracked in a Sheets column with valid transitions enforced by code. Human gate steps send targeted notifications. Invalid transitions blocked before they can corrupt the process state.'
+  },
+  {
+    title: 'Audit-Before-Build',
+    description: 'Every automation engagement begins with a structured audit of the existing process. The audit output is a JSON plan reviewed and confirmed before any code runs. No assumptions, no surprises mid-execution.'
+  }
+];
+---
+
+<Base title="For Google Workspace" description="Automation built natively in Google Sheets, Drive, Gmail, and Apps Script. No new platforms. No middleware. Eight before/after patterns for growing teams.">
+  <NavBar path="/smb" />
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" style="background: var(--bg-page); padding: var(--space-3xl) 0;">
+      <div class="container">
+        <span class="eyebrow">For Google Workspace · Growing teams (10–200 people)</span>
+        <h1 style="max-width: 700px; margin-bottom: var(--space-lg);">
+          Automation built inside your <em>Google Workspace.</em>
+        </h1>
+        <p style="max-width: 580px; font-size: 1.1rem; margin-bottom: var(--space-xl); color: var(--text-secondary);">
+          No new platforms. No middleware. Everything runs natively in the tools your team already uses every day.
+        </p>
+        <a href="/contact" class="btn btn-primary">Start a conversation →</a>
+      </div>
+    </section>
+
+    <!-- Use cases -->
+    <section class="section section-alt">
+      <div class="container section-numbered" data-section-num="01">
+        <div class="section-header">
+          <span class="eyebrow">In practice</span>
+          <h2>Eight automation patterns</h2>
+          <p>Each card shows the workflow before automation and after. All patterns are running in production. All are industry-agnostic and applicable to any team managing approvals, documents, or multi-step processes.</p>
+        </div>
+        <div class="cards-grid">
+          {useCases.map(uc => (
+            <UseCaseCard
+              badge={uc.badge}
+              title={uc.title}
+              beforeLabel={uc.beforeLabel}
+              afterLabel={uc.afterLabel}
+              beforeText={uc.beforeText}
+              afterText={uc.afterText}
+              afterHighlight={uc.afterHighlight}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pull quote -->
+    <section class="section">
+      <div class="container" style="text-align: center;">
+        <blockquote class="pull-quote">
+          Automation that runs inside your existing tools doesn't require a migration, a new licence, or a change management programme. It just works.
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="section section-alt">
+      <div class="container section-numbered" data-section-num="02">
+        <div class="section-header">
+          <span class="eyebrow">Capability reference</span>
+          <h2>What we build with</h2>
+          <p>Seven core capabilities that underpin every Google Workspace automation we deliver. Each one is a reusable pattern, not a one-off fix.</p>
+        </div>
+        <div class="caps-grid">
+          {capabilities.map(cap => (
+            <CapabilityCard title={cap.title} description={cap.description} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Stack -->
+    <section class="section">
+      <div class="container section-numbered" data-section-num="03">
+        <div class="section-header">
+          <span class="eyebrow">Architecture</span>
+          <h2>The stack</h2>
+          <p>Everything runs in Google's infrastructure. No third-party data processors. No new SaaS contracts. The automation lives where your data already lives.</p>
+        </div>
+        <div class="stack-row">
+          <StackBadge name="Google Sheets" />
+          <StackBadge name="Google Drive" />
+          <StackBadge name="Gmail" />
+          <StackBadge name="Google Apps Script" />
+          <StackBadge name="Claude API (Haiku)" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Have a Google Workspace workflow that needs automating?</h2>
+          <p>Tell us what it is. We'll tell you how we'd build it.</p>
+          <a href="/contact" class="btn btn-dark">Start a conversation →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

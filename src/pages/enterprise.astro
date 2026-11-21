@@ -1,0 +1,207 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import UseCaseCard from '../components/UseCaseCard.astro';
+import CapabilityCard from '../components/CapabilityCard.astro';
+import StackBadge from '../components/StackBadge.astro';
+
+const useCases = [
+  {
+    badge: 'Enterprise Pattern 01',
+    title: 'Cross-Tenant Approval Routing',
+    beforeLabel: 'Before · Manual Email Routing',
+    afterLabel: 'After · Automated Teams-Based Approval',
+    beforeText: 'Approval requests routed manually via email across departments. No visibility into queue depth, response times, or bottlenecks. SLA compliance tracked in a separate spreadsheet updated by hand.',
+    afterText: 'Power Automate routes approvals through Teams adaptive cards. AI Builder categorises request type and assigns the correct approver group automatically. Copilot Studio surfaces SLA status on demand without opening a separate system.',
+    afterHighlight: 'Approval routing errors eliminated. SLA compliance tracked in real time.'
+  },
+  {
+    badge: 'Enterprise Pattern 02',
+    title: 'Structured Data Extraction From Unstructured Documents',
+    beforeLabel: 'Before · Manual Re-Entry',
+    afterLabel: 'After · AI Builder Automated Extraction',
+    beforeText: 'Staff manually read incoming documents and re-enter key fields into SharePoint lists. Processing time 20–30 minutes per document. Transcription errors common. High-volume periods create processing backlogs.',
+    afterText: 'AI Builder reads documents at intake and extracts structured fields directly into Dataverse. Exceptions flagged for human review with a clear reason. Power Automate triggers downstream processes immediately on clean extracted data.',
+    afterHighlight: 'Processing time reduced from 25 minutes to under 2 minutes per document.'
+  },
+  {
+    badge: 'Enterprise Pattern 03',
+    title: 'Policy-Gated Content Assembly',
+    beforeLabel: 'Before · Manual Template Population',
+    afterLabel: 'After · Governed Automated Assembly',
+    beforeText: 'Report templates populated manually from multiple SharePoint libraries. Formatting varies by author. Version control informal. Policy review happens after assembly, creating rework loops when content doesn\'t meet standards.',
+    afterText: 'Copilot Studio assembles documents from approved template fragments based on request parameters. Output version-controlled in SharePoint. Claude reviews assembled content against a policy checklist before release. Non-compliant output blocked at source.',
+    afterHighlight: 'Policy review pass rate on first assembly: 94%.'
+  },
+  {
+    badge: 'Enterprise Pattern 04',
+    title: 'Teams-Triggered Workflow Initiation',
+    beforeLabel: 'Before · Separate System Login Required',
+    afterLabel: 'After · Natural Language Teams Interface',
+    beforeText: 'Workflow initiation requires logging into a separate system. Staff raise requests via email which must be manually translated into system actions. High error rate in translation. No confirmation of what was actually initiated.',
+    afterText: 'Teams bot accepts natural-language requests, extracts intent and parameters, and initiates the correct Power Automate flow. Confirmation and status updates return to the same Teams thread. No context switching. No separate system access required.',
+    afterHighlight: 'Workflow initiation time reduced from 8 minutes to under 60 seconds.'
+  },
+  {
+    badge: 'Enterprise Pattern 05',
+    title: 'Governed AI Summarisation at Scale',
+    beforeLabel: 'Before · Manual Analyst Summaries',
+    afterLabel: 'After · Schema-Bound AI Summarisation',
+    beforeText: 'Analysts manually summarise long reports and meeting transcripts. Summaries inconsistent in format and depth. No audit trail of what was summarised or when. Output quality varies significantly by analyst.',
+    afterText: 'Claude summarises content against a fixed schema ensuring consistent format and depth. Summaries stored with source reference and generation timestamp in SharePoint. Supervisors review and approve before distribution. Full audit trail maintained automatically.',
+    afterHighlight: 'Analyst summarisation time reduced by 70%. Audit trail complete from day one.'
+  },
+  {
+    badge: 'Enterprise Pattern 06',
+    title: 'Exception-Only Human Review',
+    beforeLabel: 'Before · All Items Reviewed Manually',
+    afterLabel: 'After · AI Triage With Human Gates on Exceptions',
+    beforeText: 'All items in a process routed to human reviewers regardless of complexity. High-volume periods create review backlogs. Reviewers fatigued by routine approvals. Genuine exceptions receive less attention because of volume.',
+    afterText: 'AI Builder classifies items by complexity and risk. Routine items processed automatically with a logged rationale. Only exceptions and high-risk items reach human reviewers, accompanied by an AI-prepared briefing covering the reason for escalation.',
+    afterHighlight: 'Human review volume reduced by 65%. Reviewer focus shifted to genuine exceptions.'
+  },
+  {
+    badge: 'Enterprise Pattern 07',
+    title: 'Audit-Ready Process Documentation',
+    beforeLabel: 'Before · Documentation Created After the Fact',
+    afterLabel: 'After · Live Execution Logging With On-Demand Reports',
+    beforeText: 'Process documentation created manually after the fact. Steps recorded from memory. Inconsistencies between documentation and actual execution common. Audit preparation is a multi-week project involving multiple people.',
+    afterText: 'Every workflow execution logged to Dataverse with step timestamps, decision points, and responsible parties. Copilot Studio generates audit-ready process reports on demand from live execution data. Documentation is always current because it is always live.',
+    afterHighlight: 'Audit preparation time reduced from two weeks to same-day.'
+  }
+];
+
+const capabilities = [
+  {
+    title: 'Copilot Studio Orchestration',
+    description: 'Custom copilots route requests, extract intent, and trigger downstream flows via Teams. Natural-language intake with structured output. No new user-facing systems to learn.'
+  },
+  {
+    title: 'Power Automate Governance',
+    description: 'All flows documented, versioned, and owned. Run history surfaced via Dataverse queries. Failed flows alert the responsible team, not a generic mailbox. Governance built in from the start.'
+  },
+  {
+    title: 'AI Builder Integration',
+    description: 'Form processing, document classification, and entity extraction using AI Builder models. Output is structured data in Dataverse, not unstructured text in an email. No third-party AI services.'
+  },
+  {
+    title: 'SharePoint as the Source of Truth',
+    description: 'Process artefacts, templates, and outputs stored in governed SharePoint libraries. Version history and permission structure aligned with existing IT governance. Nothing stored outside the tenant.'
+  },
+  {
+    title: 'Teams-Native User Experience',
+    description: 'All workflow interactions happen inside Teams. Adaptive cards for approvals. Bot responses for status queries. No context switching to external tools. Adoption is native, not trained.'
+  },
+  {
+    title: 'Exception-Only Human Gates',
+    description: 'Routine items processed automatically with a logged rationale. Exceptions and high-risk items escalated with an AI-prepared briefing. Human effort concentrated where it creates measurable value.'
+  },
+  {
+    title: 'Dataverse Audit Logging',
+    description: 'Every workflow step, decision, and outcome recorded in Dataverse with timestamp and actor. Audit-ready reports generated on demand. Compliance documentation is a query, not a project.'
+  }
+];
+---
+
+<Base title="For Enterprise" description="Automation built inside your Microsoft 365 tenant using Copilot Studio, Power Automate, and AI Builder. No new vendors. No shadow IT.">
+  <NavBar path="/enterprise" />
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" style="background: var(--bg-page); padding: var(--space-3xl) 0;">
+      <div class="container">
+        <span class="eyebrow">For Enterprise · Microsoft 365 tenants</span>
+        <h1 style="max-width: 700px; margin-bottom: var(--space-lg);">
+          Automation built inside your <em>Microsoft 365 tenant.</em>
+        </h1>
+        <p style="max-width: 580px; font-size: 1.1rem; margin-bottom: var(--space-xl); color: var(--text-secondary);">
+          No third-party platforms. No new vendors. Automation that runs inside the tools your enterprise already licences and governs.
+        </p>
+        <a href="/contact" class="btn btn-primary">Start a conversation →</a>
+      </div>
+    </section>
+
+    <!-- Use cases -->
+    <section class="section section-alt">
+      <div class="container section-numbered" data-section-num="01">
+        <div class="section-header">
+          <span class="eyebrow">In practice</span>
+          <h2>Seven enterprise patterns</h2>
+          <p>Each card shows a real enterprise workflow before automation and after. All patterns operate within the Microsoft 365 ecosystem. No external data processing. No new SaaS vendors to onboard.</p>
+        </div>
+        <div class="cards-grid">
+          {useCases.map(uc => (
+            <UseCaseCard
+              badge={uc.badge}
+              title={uc.title}
+              beforeLabel={uc.beforeLabel}
+              afterLabel={uc.afterLabel}
+              beforeText={uc.beforeText}
+              afterText={uc.afterText}
+              afterHighlight={uc.afterHighlight}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pull quote -->
+    <section class="section">
+      <div class="container" style="text-align: center;">
+        <blockquote class="pull-quote">
+          The best enterprise automation is invisible to the user and undeniable to the auditor. Everything else is a demo.
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="section section-alt">
+      <div class="container section-numbered" data-section-num="02">
+        <div class="section-header">
+          <span class="eyebrow">Capability reference</span>
+          <h2>What we build with</h2>
+          <p>Seven core capabilities across the Microsoft 365 platform. Each is a reusable pattern, not a custom integration built from scratch every engagement.</p>
+        </div>
+        <div class="caps-grid">
+          {capabilities.map(cap => (
+            <CapabilityCard title={cap.title} description={cap.description} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Stack -->
+    <section class="section">
+      <div class="container section-numbered" data-section-num="03">
+        <div class="section-header">
+          <span class="eyebrow">Architecture</span>
+          <h2>The stack</h2>
+          <p>Everything runs inside your existing Microsoft 365 licence. No new vendors to onboard. No data leaving the tenant. Your IT team governs it the same way they govern the rest of M365.</p>
+        </div>
+        <div class="stack-row">
+          <StackBadge name="Copilot Studio" />
+          <StackBadge name="Power Automate" />
+          <StackBadge name="AI Builder" />
+          <StackBadge name="SharePoint" />
+          <StackBadge name="Outlook / Teams" />
+          <StackBadge name="Excel / Dataverse" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Have a Microsoft 365 workflow that needs automating?</h2>
+          <p>Tell us what it is. We'll tell you how we'd build it — inside your tenant, within your governance.</p>
+          <a href="/contact" class="btn btn-dark">Start a conversation →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

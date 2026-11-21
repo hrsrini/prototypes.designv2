@@ -1,0 +1,108 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import CapabilityCard from '../components/CapabilityCard.astro';
+---
+
+<Base title="How We Work" description="Three phases. Three principles. The methodology behind every automation we build — from understanding the problem to shipping something permanent.">
+  <NavBar path="/how-we-work" />
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" style="background: var(--bg-page); padding: var(--space-3xl) 0;">
+      <div class="container">
+        <span class="eyebrow">Methodology</span>
+        <h1 style="max-width: 640px; margin-bottom: var(--space-lg);">
+          Built to work. <em>By design.</em>
+        </h1>
+        <p style="max-width: 580px; font-size: 1.1rem; color: var(--text-secondary);">
+          Every engagement follows the same three phases. The phases exist because every shortcut in this sequence costs more in production than it saved in discovery.
+        </p>
+      </div>
+    </section>
+
+    <!-- Three phases -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">The process</span>
+          <h2>Three phases</h2>
+        </div>
+
+        <div class="phase-card">
+          <span class="phase-num">Phase 01</span>
+          <h3>Understand</h3>
+          <p class="phase-subtitle">What is the actual problem?</p>
+          <p>Before anything is built, we map the workflow as it exists today. We document where handoffs break, where humans compensate for missing logic, and where the highest value automation would sit. No assumptions. No feature-first thinking. The output is a structured process map and a set of automation candidates, ranked by value and feasibility.</p>
+          <p style="margin-top: var(--space-md);">This phase typically takes one to three days. If we cannot agree on the problem definition at the end of it, we do not proceed. A well-understood problem has a build path. A poorly understood one has a budget problem.</p>
+        </div>
+
+        <div class="phase-card">
+          <span class="phase-num">Phase 02</span>
+          <h3>Prototype</h3>
+          <p class="phase-subtitle">Build it small. Build it right.</p>
+          <p>We build a working prototype inside your existing environment — not a demo, not a proof-of-concept with toy data. A real automation, handling real edge cases, with the architecture that will scale. You can see it run before we spend a day on production hardening.</p>
+          <p style="margin-top: var(--space-md);">The prototype is the design document. If the design is wrong — if the problem was not what we thought it was, or if the edge cases invalidate the approach — we find that out in week two, not month six. That is the entire point of building a prototype first.</p>
+          <p style="margin-top: var(--space-md);">You're at prototypes.design because every automation we build starts with one.</p>
+        </div>
+
+        <div class="phase-card">
+          <span class="phase-num">Phase 03</span>
+          <h3>Ship</h3>
+          <p class="phase-subtitle">Make it permanent.</p>
+          <p>We harden the prototype into a production system. Audit logs, error handling, documentation, and handoff to your team. The goal is an automation you will never have to touch unless the business changes. If the business changes, we change it.</p>
+          <p style="margin-top: var(--space-md);">Shipping means: someone on your team can read what the automation does and why, can identify when it has failed, and can describe it to an auditor without calling us. If those conditions are not met, it has not shipped — it has just been deployed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pull quote -->
+    <section class="section">
+      <div class="container" style="text-align: center;">
+        <blockquote class="pull-quote">
+          A prototype is the fastest way to find out if the design is wrong. We'd rather find out in week one.
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">What we believe</span>
+          <h2>Three principles</h2>
+          <p>These are not values on a wall. They are constraints that shape every decision we make in an engagement.</p>
+        </div>
+        <div class="principles-grid">
+          <CapabilityCard
+            title="We work inside your stack"
+            description="We don't propose new tools. We use what you already pay for and already govern. The automation we build is owned by your environment, not ours. When we leave, nothing leaves with us."
+          />
+          <CapabilityCard
+            title="Code decides, AI explains"
+            description="Where we use AI, it explains, drafts, and interprets. It does not make binding decisions. Deterministic logic runs the workflow. AI adds the intelligence layer. The automation is auditable because the logic is explicit."
+          />
+          <CapabilityCard
+            title="Prototypes are the product"
+            description="Every engagement starts with a working prototype. If the prototype doesn't solve the problem, we learn that in week two, not month six. The prototype is not a deliverable on the way to the product — it is the design process."
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Ready to start with a prototype?</h2>
+          <p>Tell us the workflow. We'll scope phase one and show you what a working prototype would look like.</p>
+          <a href="/contact" class="btn btn-dark">Start a conversation →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

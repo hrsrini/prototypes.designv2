@@ -1,0 +1,123 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Contact" description="Tell us the workflow you want to automate. We'll tell you if we can build it.">
+  <NavBar path="/contact" />
+
+  <main>
+    <!-- Hero -->
+    <section style="background: var(--bg-page); padding: var(--space-3xl) 0 var(--space-2xl);">
+      <div class="container">
+        <span class="eyebrow">Get in touch</span>
+        <h1 style="max-width: 640px; margin-bottom: var(--space-lg);">
+          Let's talk about your <em>workflow.</em>
+        </h1>
+        <p style="max-width: 580px; font-size: 1.05rem; color: var(--text-secondary);">
+          You're at prototypes.design because every automation we build starts as a prototype. If you have a workflow you want to automate — tell us what it is, and we'll tell you if we can build it.
+        </p>
+      </div>
+    </section>
+
+    <!-- Form + aside -->
+    <section class="section">
+      <div class="container">
+        <div class="contact-layout">
+          <div>
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" required placeholder="Your name" />
+                </div>
+                <div class="field">
+                  <label for="company">Company</label>
+                  <input type="text" id="company" name="company" placeholder="Your organisation" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="you@yourcompany.com" />
+              </div>
+              <div class="field">
+                <label for="platform">Which platform?</label>
+                <select id="platform" name="platform">
+                  <option value="">Select one</option>
+                  <option value="Google Workspace">Google Workspace</option>
+                  <option value="Microsoft 365">Microsoft 365</option>
+                  <option value="Both">Both</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="workflow">Describe the workflow you want to automate</label>
+                <textarea id="workflow" name="workflow" rows="5" placeholder="Describe the process — what triggers it, what steps it involves, where it currently breaks down." required></textarea>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary" id="submit-btn">Send it →</button>
+                <div class="form-error-msg" id="form-error">Something went wrong. Please try again or email us directly at prototypenow@prototypes.design.</div>
+              </div>
+            </form>
+            <div class="form-success" id="form-success">
+              <strong>Message sent.</strong> We'll get back to you within one business day. If the workflow is a good fit for a prototype, we'll say so and suggest a scope.
+            </div>
+          </div>
+
+          <div class="contact-aside">
+            <div class="aside-block">
+              <span class="aside-title">Response time</span>
+              <p>We respond to every enquiry within one business day. If your workflow is a good fit for a prototype, we'll say so clearly and suggest a scope.</p>
+            </div>
+            <div class="aside-block">
+              <span class="aside-title">About this service</span>
+              <p>Prototypes by Design is a consulting service of <a href="https://novoup.com" target="_blank" rel="noopener">NovoUp Technologies</a>.</p>
+              <p style="margin-top: 10px;"><a href="mailto:prototypenow@prototypes.design">prototypenow@prototypes.design</a></p>
+            </div>
+            <div class="aside-block">
+              <span class="aside-title">What happens next</span>
+              <p>We read your submission, assess the workflow, and come back with one of three answers: we can build it, we can build part of it, or it's not the right fit. We'll tell you which and why.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successEl = document.getElementById('form-success') as HTMLElement;
+  const errorEl = document.getElementById('form-error') as HTMLElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    errorEl.style.display = 'none';
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+      } else {
+        throw new Error('Non-ok response');
+      }
+    } catch {
+      errorEl.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send it →';
+    }
+  });
+</script>

@@ -1,0 +1,114 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Home" description="AI-led automation consulting for Google Workspace and Microsoft 365. Every workflow deserves a prototype first. Ours ship.">
+  <NavBar path="/" />
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" style="background: var(--bg-page); padding: var(--space-3xl) 0;">
+      <div class="container">
+        <span class="eyebrow">prototypes.design · AI-led automation consulting</span>
+        <h1 style="max-width: 720px; margin-bottom: var(--space-lg);">
+          Every workflow deserves a prototype first. <em>Ours ship.</em>
+        </h1>
+        <p style="max-width: 600px; font-size: 1.1rem; margin-bottom: var(--space-xl); color: var(--text-secondary);">
+          We build automation natively inside your existing Google Workspace or Microsoft 365 environment — deliberately designed, not patched together.
+        </p>
+        <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+          <a href="/smb" class="btn btn-primary">For Google Workspace →</a>
+          <a href="/enterprise" class="btn btn-outline">For Microsoft 365 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-track section -->
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">Two platforms. One approach.</span>
+        <h2>Where do you work?</h2>
+        <div class="track-grid">
+          <a href="/smb" class="track-card">
+            <span class="track-card-label">Google Workspace</span>
+            <h3>For growing teams</h3>
+            <p>Automation built natively in Sheets, Drive, Gmail, and Apps Script. No new platforms. No middleware. For teams of 10–200 people who need things to actually work.</p>
+            <div class="track-card-tools">
+              <span class="tool-tag">Google Sheets</span>
+              <span class="tool-tag">Google Drive</span>
+              <span class="tool-tag">Gmail</span>
+              <span class="tool-tag">Apps Script</span>
+              <span class="tool-tag">Claude API</span>
+            </div>
+            <div class="track-card-cta">Explore Google Workspace patterns →</div>
+          </a>
+          <a href="/enterprise" class="track-card">
+            <span class="track-card-label">Microsoft 365</span>
+            <h3>For enterprise workflows</h3>
+            <p>Automation inside your M365 tenant using tools your IT team already governs. Copilot Studio, Power Automate, AI Builder — no shadow IT, no new vendors.</p>
+            <div class="track-card-tools">
+              <span class="tool-tag">Copilot Studio</span>
+              <span class="tool-tag">Power Automate</span>
+              <span class="tool-tag">AI Builder</span>
+              <span class="tool-tag">SharePoint</span>
+            </div>
+            <div class="track-card-cta">Explore enterprise patterns →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pull quote -->
+    <section class="section section-alt">
+      <div class="container" style="text-align: center;">
+        <blockquote class="pull-quote">
+          Any organisation with more than a few moving parts has automation debt. The question is whether that debt is managed or hidden.
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- How we work summary -->
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">The method</span>
+        <h2 style="margin-bottom: var(--space-xl);">How we work</h2>
+        <div class="steps-row">
+          <div class="step">
+            <span class="step-num">01</span>
+            <h3>Understand</h3>
+            <p>We map the workflow as it exists today — where handoffs break, where humans compensate for missing logic, where the highest value automation sits.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <h3>Prototype</h3>
+            <p>A working automation inside your existing environment. Not a demo. Real edge cases, real data, the architecture that will scale. You see it run before we spend a day on production hardening.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <h3>Ship</h3>
+            <p>Audit logs, error handling, documentation, handoff to your team. An automation you will never have to touch unless the business changes.</p>
+          </div>
+        </div>
+        <div style="margin-top: var(--space-xl);">
+          <a href="/how-we-work" class="btn btn-outline">See the full methodology →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Ready to prototype your first automation?</h2>
+          <p>Tell us the workflow. We'll tell you if we can build it.</p>
+          <a href="/contact" class="btn btn-dark">Start a conversation →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

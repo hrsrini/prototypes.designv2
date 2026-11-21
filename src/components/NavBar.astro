@@ -1,0 +1,46 @@
+---
+interface Props {
+  path?: string;
+}
+const { path = '' } = Astro.props;
+---
+
+<nav class="navbar">
+  <a href="/" class="wordmark">
+    prototypes<span class="dot">.</span><span class="design">design</span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="/smb" class={path === '/smb' ? 'active' : ''}>For Google Workspace</a></li>
+      <li><a href="/enterprise" class={path === '/enterprise' ? 'active' : ''}>For Enterprise</a></li>
+      <li><a href="/how-we-work" class={path === '/how-we-work' ? 'active' : ''}>How We Work</a></li>
+      <li><a href="/contact" class={path === '/contact' ? 'active' : ''}>Contact</a></li>
+    </ul>
+    <a href="/contact" class="btn btn-primary nav-cta">Book a call →</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
+  <a href="/" onclick="closeMobileMenu()">
+    <span class="wordmark">prototypes<span class="dot">.</span><span class="design">design</span></span>
+  </a>
+  <a href="/smb" onclick="closeMobileMenu()">For Google Workspace</a>
+  <a href="/enterprise" onclick="closeMobileMenu()">For Enterprise</a>
+  <a href="/how-we-work" onclick="closeMobileMenu()">How We Work</a>
+  <a href="/contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="/contact" class="btn btn-primary" onclick="closeMobileMenu()">Book a call →</a>
+</div>
+
+<script>
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu')?.classList.remove('open');
+  }
+  document.getElementById('hamburger')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.add('open');
+  });
+  document.getElementById('mobile-close')?.addEventListener('click', closeMobileMenu);
+</script>
