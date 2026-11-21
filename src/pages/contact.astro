@@ -31,7 +31,7 @@ import Footer from '../components/Footer.astro';
       <div class="container">
         <div class="contact-layout">
           <div>
-            <form class="contact-form" id="contact-form" novalidate>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mgaknwvj" method="POST">
               <div class="form-row">
                 <div class="field">
                   <label for="name">Name</label>
@@ -105,18 +105,18 @@ import Footer from '../components/Footer.astro';
     submitBtn.textContent = 'Sending…';
     errorEl.style.display = 'none';
 
-    const formData = new FormData(form);
-
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://formspree.io/f/mgaknwvj', {
         method: 'POST',
-        body: formData
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       });
+      const data = await res.json();
       if (res.ok) {
         form.style.display = 'none';
         successEl.style.display = 'block';
       } else {
-        throw new Error('Non-ok response');
+        throw new Error(data?.errors?.[0]?.message || 'Submission failed');
       }
     } catch {
       errorEl.style.display = 'block';
