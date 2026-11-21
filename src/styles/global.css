@@ -40,7 +40,7 @@
   --after-label-text: #166534;
 
   /* Typography */
-  --font-serif:      'Instrument Serif', Georgia, serif;
+  --font-serif:      'Times New Roman', Times, serif;
   --font-sans:       'Inter', system-ui, sans-serif;
   --font-mono:       'JetBrains Mono', 'Courier New', monospace;
 
@@ -131,7 +131,7 @@ em { font-style: italic; }
 .eyebrow {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -141,15 +141,16 @@ em { font-style: italic; }
 
 /* Wordmark */
 .wordmark {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 32px;
   font-weight: 400;
   color: var(--text-primary);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
+  line-height: 1;
 }
 .wordmark .dot { color: var(--amber); }
-.wordmark .design { font-style: italic; font-weight: 700; }
+.wordmark .design { font-style: italic; font-weight: 400; color: #CC0000; }
 
 /* Buttons */
 .btn {
@@ -686,7 +687,7 @@ em { font-style: italic; }
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0 var(--space-xl);
-  height: 60px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -694,7 +695,7 @@ em { font-style: italic; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-xl);
+  gap: 20px;
   list-style: none;
 }
 .nav-links a {
@@ -719,7 +720,8 @@ em { font-style: italic; }
   background: var(--accent);
   border-radius: 1px;
 }
-.nav-cta { margin-left: var(--space-md); }
+.nav-cta { margin-left: var(--space-md); background: #1D4ED8 !important; }
+.nav-cta:hover { background: #1E40AF !important; }
 .nav-right {
   display: flex;
   align-items: center;

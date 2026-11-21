@@ -11,7 +11,8 @@ const { path = '' } = Astro.props;
   </a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="/smb" class={path === '/smb' ? 'active' : ''}>For Google Workspace</a></li>
+      <li><a href="/" class={path === '/' ? 'active' : ''}>Home</a></li>
+      <li><a href="/smb" class={path === '/smb' ? 'active' : ''}>For SMBs</a></li>
       <li><a href="/enterprise" class={path === '/enterprise' ? 'active' : ''}>For Enterprise</a></li>
       <li><a href="/how-we-work" class={path === '/how-we-work' ? 'active' : ''}>How We Work</a></li>
       <li><a href="/contact" class={path === '/contact' ? 'active' : ''}>Contact</a></li>
@@ -28,7 +29,8 @@ const { path = '' } = Astro.props;
   <a href="/" onclick="closeMobileMenu()">
     <span class="wordmark">prototypes<span class="dot">.</span><span class="design">design</span></span>
   </a>
-  <a href="/smb" onclick="closeMobileMenu()">For Google Workspace</a>
+  <a href="/" onclick="closeMobileMenu()">Home</a>
+  <a href="/smb" onclick="closeMobileMenu()">For SMBs</a>
   <a href="/enterprise" onclick="closeMobileMenu()">For Enterprise</a>
   <a href="/how-we-work" onclick="closeMobileMenu()">How We Work</a>
   <a href="/contact" onclick="closeMobileMenu()">Contact</a>
