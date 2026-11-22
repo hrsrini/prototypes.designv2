@@ -1,0 +1,74 @@
+---
+export const prerender = true;
+import Base from '../layouts/Base.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base
+  title="Right Fit? Who We Work With | prototypes.design"
+  description="We work with two kinds of teams — growing businesses on Google Workspace and enterprise ops leads on Microsoft 365. Find out if we're the right fit."
+>
+  <NavBar path="/fit" />
+
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container">
+        <span class="eyebrow">Right fit?</span>
+        <h1>Find out if we're the <em>right fit.</em></h1>
+        <p class="hero-sub">We work with two kinds of teams. See which one sounds like you.</p>
+      </div>
+    </section>
+
+    <section class="who-section who-section--fit">
+      <div class="container">
+        <span class="eyebrow">For growing teams · Google Workspace</span>
+        <div class="who-grid">
+          <div class="who-card">
+            <span class="who-label">The Operator</span>
+            <p>You run the business. Ten to a hundred and fifty people. Google Workspace is your stack. Somewhere between headcount five and fifty, your processes stopped scaling — but the tools didn't change. Someone holds it all together. When they're on leave, things slip.</p>
+          </div>
+          <div class="who-card">
+            <span class="who-label">The Builder</span>
+            <p>You're growing fast and the cracks are showing. Approval chains that live in someone's inbox. Reports assembled by hand every Monday. Onboarding that depends on whoever has time. You know exactly which processes are breaking. You just haven't had time to fix them properly.</p>
+          </div>
+        </div>
+        <p class="who-closing"><em>If either of these sounds like your team — the Google Workspace patterns are built for you.</em></p>
+        <div style="text-align:center; margin-top: 1.5rem;">
+          <a href="/smb" class="btn-secondary">See Google Workspace patterns →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="who-section who-section--fit" style="background: var(--bg-white); border-top: 1px solid var(--border);">
+      <div class="container">
+        <span class="eyebrow">For enterprise · Microsoft 365</span>
+        <div class="who-grid">
+          <div class="who-card">
+            <span class="who-label">The Ops Lead</span>
+            <p>You own workflows that cross teams, touch regulated data, and need to run inside IT governance. You've seen what happens when someone builds automation outside the tenant. You're not doing that. Whatever gets built has to live inside Microsoft 365 — auditable, maintainable, and owned by your environment, not a consultant's.</p>
+          </div>
+          <div class="who-card">
+            <span class="who-label">The Process Owner</span>
+            <p>You have a process that works in theory and breaks in practice. Every cycle. The same way. You know exactly where it fails — the handoff no one takes, the data entry that introduces errors, the approval that sits in someone's inbox for a week. You've tried fixing it with reminders and checklists. It needs to be engineered, not managed.</p>
+          </div>
+        </div>
+        <p class="who-closing"><em>If either of these is your situation — the Microsoft 365 patterns were built for environments like yours.</em></p>
+        <div style="text-align:center; margin-top: 1.5rem;">
+          <a href="/enterprise" class="btn-secondary">See Microsoft 365 patterns →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band-wrapper">
+      <div class="container">
+        <div class="cta-band">
+          <h2>If any of this sounds like your situation — let's talk.</h2>
+          <p>Tell us the process. We'll tell you if we can build it.</p>
+          <a href="/contact" class="btn-primary">Start a conversation →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
