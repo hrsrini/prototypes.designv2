@@ -5,7 +5,17 @@ import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Base title="Home" description="AI-led automation consulting for Google Workspace and Microsoft 365. Every workflow deserves a prototype first. Ours ship.">
+<Base fullTitle="AI-Led Automation Consulting | Google Workspace & Microsoft 365 | prototypes.design" title="Home" description="AI-led automation consulting for Google Workspace and Microsoft 365. Every workflow deserves a prototype first. Ours ship.">
+  <script slot="head" type="application/ld+json" is:inline>{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "prototypes.design",
+    "url": "https://prototypes.design",
+    "description": "AI-led automation consulting for Google Workspace and Microsoft 365. We prototype workflows that ship.",
+    "serviceType": "AI Automation Consulting",
+    "areaServed": "Worldwide",
+    "email": "prototypenow@prototypes.design"
+  })}</script>
   <NavBar path="/" />
 
   <main>
@@ -123,12 +133,12 @@ import Footer from '../components/Footer.astro';
     </section>
 
     <!-- CTA band -->
-    <section class="section">
+    <section class="section" style="padding: 0;">
       <div class="container">
-        <div class="cta-band">
+        <div class="cta-band" style="padding: 4rem var(--space-xl);">
           <h2>Ready to prototype your first automation?</h2>
           <p>Tell us the workflow. We'll tell you if we can build it.</p>
-          <a href="/contact" class="btn btn-dark">Start a conversation →</a>
+          <a href="/contact" class="btn btn-primary">Start a conversation →</a>
         </div>
       </div>
     </section>

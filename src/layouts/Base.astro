@@ -2,25 +2,27 @@
 import '../styles/global.css';
 interface Props {
   title: string;
+  fullTitle?: string;
   description?: string;
   path?: string;
 }
-const { title, description = 'AI-led automation consulting for Google Workspace and Microsoft 365. Built as a prototype. Shipped to production.', path = '' } = Astro.props;
+const { title, fullTitle, description = 'AI-led automation consulting for Google Workspace and Microsoft 365. Built as a prototype. Shipped to production.', path = '' } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} · prototypes.design</title>
+  <title>{fullTitle ?? `${title} · prototypes.design`}</title>
   <meta name="description" content={description} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta property="og:title" content={`${title} · prototypes.design`} />
+  <meta property="og:title" content={fullTitle ?? `${title} · prototypes.design`} />
   <meta property="og:description" content={description} />
   <meta property="og:site_name" content="prototypes.design" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <slot name="head" />
 </head>
 <body>
   <slot />

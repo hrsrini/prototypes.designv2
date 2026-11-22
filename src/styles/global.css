@@ -350,10 +350,11 @@ em { font-style: italic; }
 
 /* CTA Band */
 .cta-band {
-  background: linear-gradient(135deg, #2D1B8C 0%, #0F0D1A 60%);
+  background: linear-gradient(135deg, #3d1a6e 0%, #1a0a3d 100%);
   color: var(--text-on-dark);
   padding: var(--space-2xl) var(--space-xl);
   border-radius: var(--radius-lg);
+  border-top: 1px solid rgba(255,255,255,0.1);
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -872,15 +873,16 @@ em { font-style: italic; }
 
 /* Footer */
 .footer {
-  background: var(--bg-dark);
+  background: #0d0d14;
   color: var(--text-on-dark);
-  padding: var(--space-3xl) 0 0;
+  padding: 3rem 0 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 .footer .container {
   display: grid;
   grid-template-columns: 2fr 1fr 1.5fr;
   gap: var(--space-2xl);
-  padding-bottom: var(--space-3xl);
+  padding-bottom: 3rem;
 }
 @media (max-width: 768px) {
   .footer .container { grid-template-columns: 1fr; gap: var(--space-xl); }
