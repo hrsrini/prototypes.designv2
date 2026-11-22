@@ -3,84 +3,8 @@ export const prerender = true;
 import Base from '../layouts/Base.astro';
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
-import UseCaseCard from '../components/UseCaseCard.astro';
 import CapabilityCard from '../components/CapabilityCard.astro';
 import StackBadge from '../components/StackBadge.astro';
-
-const useCases = [
-  {
-    badge: 'Use Case 01',
-    title: 'Approval Chains That Don\'t Require Chasing',
-    beforeLabel: 'Before · Manual Approval Email',
-    afterLabel: 'After · Google Workspace Automated Flow',
-    beforeText: 'Approval requests buried in email threads. Approvers miss them. Submitters spend time following up. No visibility into where the request stands or who is responsible.',
-    afterText: 'Automated approval chain via Google Sheets and Gmail. Each approver receives a direct link with one-click approve or reject. Submitters see live status in a tracker sheet. Claude summarises the request in plain language for approvers with no prior context.',
-    afterHighlight: 'Average approval cycle cut from 4 days to same-day.'
-  },
-  {
-    badge: 'Use Case 02',
-    title: 'Document Submission Loops With Conditional Logic',
-    beforeLabel: 'Before · Manual Review Rounds',
-    afterLabel: 'After · Conditional Intake Automation',
-    beforeText: 'Reviewers receive incomplete submissions and must manually request the missing information. Each round trip adds days. No log of what was requested or when. Submitters unsure what is still outstanding.',
-    afterText: 'Submission form validates completeness before accepting. Conditional logic triggers targeted follow-up only for the specific missing fields. Full submission history and conversation log stored in Drive.',
-    afterHighlight: 'Re-submission cycles eliminated. First-time complete submissions significantly up.'
-  },
-  {
-    badge: 'Google Workspace Pattern 03',
-    title: 'Automation at Scale Without Hitting Platform Limits',
-    beforeLabel: 'Before · Quota Failures Mid-Run',
-    afterLabel: 'After · Batch Scheduled Execution',
-    beforeText: 'Apps Script quota limits hit mid-week on high-volume operations. Manual workarounds split work across multiple scripts with no central oversight. Failures silent until someone notices incorrect data.',
-    afterText: 'Batch scheduling spreads operations across time windows to stay within Google execution quotas. A single orchestration sheet controls batch size, timing, and retry logic. Errors surface to a monitor tab, not to end users.',
-    afterHighlight: 'Zero quota failures across a 10,000+ row weekly operation.'
-  },
-  {
-    badge: 'Google Workspace Pattern 04',
-    title: 'Single-Owner Data Integrity in Shared Sheets',
-    beforeLabel: 'Before · Multi-Editor Overwrites',
-    afterLabel: 'After · Row-Level Access Control',
-    beforeText: 'Multiple editors update a shared Sheet simultaneously. Formulas break, rows get deleted, audit trail is non-existent. Errors discovered days after they happen, with no record of who made what change.',
-    afterText: 'Edit permissions restricted per row to the designated owner. All changes logged with timestamp and user identity. Claude reviews anomalies and surfaces them in a morning summary email to the process owner.',
-    afterHighlight: 'Data integrity issues eliminated. Full audit log from day one.'
-  },
-  {
-    badge: 'Google Workspace Pattern 05',
-    title: 'Template-Driven Document Assembly',
-    beforeLabel: 'Before · Manual Copy-Paste Into Templates',
-    afterLabel: 'After · Automated Document Generation',
-    beforeText: 'Staff manually copy data from a tracker into document templates. Each document takes 15–20 minutes. Formatting inconsistencies are routine. High volume periods create a document production backlog.',
-    afterText: 'Claude reads row data and populates a Google Docs template via the Drive API. Output documents are formatted, named, and filed in the correct folder automatically. Batch runs handle entire datasets overnight.',
-    afterHighlight: '50-document batch processed in under 4 minutes.'
-  },
-  {
-    badge: 'Google Workspace Pattern 06',
-    title: 'Multi-State Workflow With Human Gates',
-    beforeLabel: 'Before · Status Column Updated Manually',
-    afterLabel: 'After · Enforced State Machine With Notifications',
-    beforeText: 'A five-stage process tracked in a spreadsheet with no enforcement. Stages skipped. Status updated manually and inconsistently. No notifications at stage transitions. Process compliance impossible to measure.',
-    afterText: 'Workflow state machine in Sheets enforces valid transitions. Claude validates each transition and blocks invalid ones with a clear explanation. Email notifications sent automatically at each gate. Process state visible to all stakeholders in real time.',
-    afterHighlight: 'Process compliance measurable for the first time.'
-  },
-  {
-    badge: 'Google Workspace Pattern 07',
-    title: 'Staged Approval With Conditional Escalation',
-    beforeLabel: 'Before · All Items Through the Same Path',
-    afterLabel: 'After · Two-Tier Routing With AI Triage',
-    beforeText: 'High-value and standard items follow the same approval path. Senior approvers bottlenecked by routine decisions. Escalation paths informal and inconsistent. No documentation of why something was escalated.',
-    afterText: 'First-stage approval handles standard cases automatically. Items above a defined threshold, or flagged by Claude as anomalous, escalate to senior approvers with a prepared summary and reasoning. Every escalation decision logged.',
-    afterHighlight: 'Senior approver workload reduced by 60%. Escalation path consistent and documented.'
-  },
-  {
-    badge: 'Google Workspace Pattern 08',
-    title: 'Design-Then-Execute Session Handoff',
-    beforeLabel: 'Before · Decisions Made Mid-Execution',
-    afterLabel: 'After · Confirmed Plan Before Any Code Runs',
-    beforeText: 'Configuration decisions made ad hoc during execution. Errors discovered mid-run require manual rollback. No record of what was decided or why. Repeating the run requires reconstructing the original intent.',
-    afterText: 'A design session produces a structured JSON plan reviewed and confirmed before any execution begins. Claude narrates the plan in plain English. Execution reads from the confirmed plan only. The session log is permanent.',
-    afterHighlight: 'Zero mid-run failures caused by unclear requirements.'
-  }
-];
 
 const capabilities = [
   {
@@ -135,26 +59,329 @@ const capabilities = [
       </div>
     </section>
 
-    <!-- Use cases -->
-    <section class="section section-alt">
-      <div class="container section-numbered" data-section-num="01">
-        <div class="section-header">
-          <span class="eyebrow">In practice</span>
-          <h2>Eight automation patterns</h2>
-          <p>Each card shows the workflow before automation and after. All patterns are running in production. All are industry-agnostic and applicable to any team managing approvals, documents, or multi-step processes.</p>
-        </div>
-        <div class="cards-grid">
-          {useCases.map(uc => (
-            <UseCaseCard
-              badge={uc.badge}
-              title={uc.title}
-              beforeLabel={uc.beforeLabel}
-              afterLabel={uc.afterLabel}
-              beforeText={uc.beforeText}
-              afterText={uc.afterText}
-              afterHighlight={uc.afterHighlight}
-            />
-          ))}
+    <!-- Case Studies -->
+    <section class="section section-numbered" data-section-num="01">
+      <div class="container">
+        <span class="eyebrow">In Practice</span>
+        <h2>Automation patterns that have shipped</h2>
+        <p class="section-sub">Every case below is a live pattern — built, tested, and running in a real environment. Click any card to read the full case.</p>
+        <div class="cs-grid" style="margin-top: 2.5rem;">
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 01 · Financial Operations</span>
+              <h3 class="cs-headline">The full settlement cycle, automated</h3>
+              <p class="cs-synopsis">Multi-party payouts, reconciliation, and statement generation — running inside Google Sheets without manual formulas or copy-paste.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Google Sheets</span>
+                <span class="cs-tag">Apps Script</span>
+                <span class="cs-tag">Claude API</span>
+                <span class="cs-tag">Gmail</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Any business that manages payouts, splits, or settlements across multiple parties knows the pain. Rate grids. Calculations. Deductions. Reconciliation. Statements. Disputes. The whole cycle done manually, every month, by someone who has better things to do.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Source data loaded once, reused every cycle — no re-entry, no copy-paste errors</li>
+                  <li>Calculations run across the full dataset in a single trigger</li>
+                  <li>Statutory adjustments applied automatically — no manual formulas, no lookup errors</li>
+                  <li>Statements and payment documents generated and dispatched on schedule</li>
+                  <li>Incoming documents parsed directly from PDF and reconciled against your own numbers</li>
+                  <li>Every exception surfaced. Human approval before anything goes out.</li>
+                  <li>Operator interface: a spreadsheet and a button. No training required.</li>
+                </ul>
+                <p class="cs-pull">The complexity lives in the engine. The interface stays simple. That's the point.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If your team manages any kind of multi-party financial settlement — commissions, referral fees, revenue splits, partner payouts — this pattern works for you. The domain changes. The architecture doesn't.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 02 · Document Operations</span>
+              <h3 class="cs-headline">Conditional document workflows that close themselves</h3>
+              <p class="cs-synopsis">Submission, review, escalation, and closure — handled by logic, not by chasing people over email.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Google Forms</span>
+                <span class="cs-tag">Google Drive</span>
+                <span class="cs-tag">Apps Script</span>
+                <span class="cs-tag">Gmail</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Every business has a document submission process that works in theory and breaks in practice. Someone submits. Someone reviews. Something's missing. The request goes back. The original submitter doesn't respond. The reviewer forgets to follow up. The whole thing stalls in someone's inbox for three weeks.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Single intake point — one form, structured data, nothing missing on arrival</li>
+                  <li>Routing logic built in — the right reviewer gets it without a human making the call</li>
+                  <li>Status visible at every stage — no "where is this up to?" emails</li>
+                  <li>Automatic follow-up triggered by inactivity — the system chases, not the manager</li>
+                  <li>Conditional escalation — if it's not resolved in N days, it goes up the chain automatically</li>
+                  <li>Document generated on approval — no copy-paste from the form into a template</li>
+                  <li>Audit trail written throughout — who did what, when, with timestamps</li>
+                </ul>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>The process still involves humans at every decision point. The automation just makes sure nothing gets lost between decisions. If you have a process that requires human judgement but keeps breaking due to coordination failure, this is the fix.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 03 · Scale Operations</span>
+              <h3 class="cs-headline">Batch processing without hitting platform limits</h3>
+              <p class="cs-synopsis">Run high-volume operations at scale inside Google Workspace — structured, rate-aware, and resumable.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Google Sheets</span>
+                <span class="cs-tag">Apps Script</span>
+                <span class="cs-tag">Claude API</span>
+                <span class="cs-tag">Google Drive</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Apps Script has execution limits. The Claude API has rate limits. Google Drive has quota. Any automation that processes large datasets will eventually hit one of them. Most teams discover this in production, not in testing.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Batch size calculated per run based on remaining quota — not hardcoded</li>
+                  <li>Checkpoint written after every batch — if the run fails, it resumes from the last successful point</li>
+                  <li>Rate limiting built into every API call — no 429s, no silent failures</li>
+                  <li>Progress visible in the sheet — the operator can see exactly what's been processed</li>
+                  <li>Error rows flagged separately — isolated, retryable, never silently skipped</li>
+                  <li>Designed to run on a time trigger — no manual intervention needed once configured</li>
+                </ul>
+                <p class="cs-pull">The system that fails gracefully is the system that earns trust. We build for the edge case, not just the happy path.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If you've tried to automate something at scale and hit a wall — rate limits, timeouts, partial runs — this is the architecture that makes it reliable. Volume is not a reason to stay manual.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 04 · Data Integrity</span>
+              <h3 class="cs-headline">One source of truth that actually stays true</h3>
+              <p class="cs-synopsis">Single-owner data integrity in shared Google Sheets — with locks, validation, and audit logs built in.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Google Sheets</span>
+                <span class="cs-tag">Apps Script</span>
+                <span class="cs-tag">Google Drive</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Shared spreadsheets are a collaboration tool that creates data problems. Someone edits a formula. Someone adds a row in the wrong format. Someone overwrites last month's figures. The errors are invisible until something breaks downstream.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Sheet structure locked — only designated fields are editable</li>
+                  <li>Input validation run on every change — wrong format rejected immediately, not discovered later</li>
+                  <li>Formula columns protected — no manual override, no accidental deletion</li>
+                  <li>Change log written to a separate tab — every edit timestamped, every editor identified</li>
+                  <li>Automated consistency check runs on schedule — flags any row that doesn't match expected structure</li>
+                  <li>Recovery path built in — the last clean state is always restorable</li>
+                </ul>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If your data lives in a shared sheet and you can't be certain it's correct, this gives you that certainty. Single-owner integrity at the data layer means everything built on top of it is reliable.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 05 · Document Assembly</span>
+              <h3 class="cs-headline">Template-driven documents that write themselves</h3>
+              <p class="cs-synopsis">Populate, format, and distribute structured documents from a single data source — no copy-paste, no version drift.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Google Docs</span>
+                <span class="cs-tag">Google Sheets</span>
+                <span class="cs-tag">Apps Script</span>
+                <span class="cs-tag">Gmail</span>
+                <span class="cs-tag">Google Drive</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Every business produces recurring documents. Reports. Certificates. Proposals. Letters. Each one starts from a template, gets filled in manually, gets formatted, gets checked, gets sent. The process is the same every time. The errors are the same every time.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Master template in Google Docs with named placeholders</li>
+                  <li>Data pulled from a source sheet — one row per document</li>
+                  <li>Document generated per row — name, date, figures, signatures all resolved from data</li>
+                  <li>Formatting applied automatically — consistent every time, regardless of who runs it</li>
+                  <li>Document saved to Drive in the correct folder structure</li>
+                  <li>Distribution triggered on generation — email or Drive share, depending on recipient type</li>
+                  <li>Batch run available — generate all documents for a period in one trigger</li>
+                </ul>
+                <p class="cs-pull">If a human is copying data from a spreadsheet into a document, that's a job for code. We've never seen a template process that couldn't be automated.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If you produce any recurring document — and the content varies only by the data, not by judgement — this removes the manual work entirely. The only human step remaining is approving the trigger.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 06 · Workflow Automation</span>
+              <h3 class="cs-headline">Multi-state workflows with human decision gates</h3>
+              <p class="cs-synopsis">Complex approval chains with conditional routing, escalation, and a full audit trail — running in Google Workspace.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Google Forms</span>
+                <span class="cs-tag">Google Sheets</span>
+                <span class="cs-tag">Apps Script</span>
+                <span class="cs-tag">Gmail</span>
+                <span class="cs-tag">Google Drive</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Some processes have more than two states. Something gets submitted. It gets reviewed. It might get sent back. It might get escalated. It might get approved at one level and rejected at another. Tracking this manually — across email threads, across people, across time — is where things fall apart.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>State machine built in Apps Script — each stage has defined valid transitions</li>
+                  <li>Role-based access — reviewers see only their queue, not the whole dataset</li>
+                  <li>Decision captured in the sheet — not in an email thread</li>
+                  <li>Automatic progression — once a decision is logged, the next stage triggers immediately</li>
+                  <li>Conditional routing — different outcomes route to different next stages</li>
+                  <li>SLA tracking — time in each state recorded, overdue items flagged automatically</li>
+                  <li>Full audit trail — every state transition timestamped and logged</li>
+                  <li>Notifications sent at each transition — the right person is always informed</li>
+                </ul>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If you have a process with more than two approval stages, conditional routing, or SLA requirements — and you're currently tracking it in email or a manual sheet — this is the structure that makes it reliable and auditable.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 07 · Approval Automation</span>
+              <h3 class="cs-headline">Staged approvals with automatic escalation</h3>
+              <p class="cs-synopsis">Time-bound approval chains that escalate without human intervention — no chasing, no dropped items.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Google Sheets</span>
+                <span class="cs-tag">Apps Script</span>
+                <span class="cs-tag">Gmail</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Approval processes fail in predictable ways. The approver doesn't see the request. The approver sees it but doesn't respond. The deadline passes. Someone eventually notices and chases manually. This happens on a schedule — every cycle, every month, predictably.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Request logged with timestamp and assigned approver on submission</li>
+                  <li>First reminder sent automatically after N hours of no response</li>
+                  <li>Escalation triggered after N+M hours — goes to the approver's manager automatically</li>
+                  <li>Final escalation path defined — the system knows who to go to if nobody responds</li>
+                  <li>Every reminder and escalation logged — full visibility into where it stalled</li>
+                  <li>Approval captured in the sheet — email reply is not a valid approval signal</li>
+                  <li>Dashboard view for the manager — all pending items, age, current escalation stage</li>
+                </ul>
+                <p class="cs-pull">If a person is manually chasing approvals, that's not a people problem. It's a system design problem.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If your approval process relies on people remembering to respond or managers remembering to chase, this removes the memory requirement. The system escalates. The human decides.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 08 · Session Management</span>
+              <h3 class="cs-headline">Design sessions that hand off to execution automatically</h3>
+              <p class="cs-synopsis">Capture decisions in a structured session, then trigger downstream work without re-entry or reformatting.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Google Docs</span>
+                <span class="cs-tag">Google Sheets</span>
+                <span class="cs-tag">Apps Script</span>
+                <span class="cs-tag">Claude API</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Planning sessions produce decisions. Decisions go into notes. Notes get sent around. Someone reads the notes and enters the decisions into a system. The decisions get entered incorrectly. Or late. Or not at all. The gap between the decision and the execution is where things go wrong.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Structured session template in Google Docs — decisions captured in a consistent format</li>
+                  <li>Claude API reads the session document on trigger — extracts decisions, assignments, and deadlines</li>
+                  <li>Extracted data written to a tracking sheet automatically — no re-entry</li>
+                  <li>Assignments dispatched by email to named owners on extraction</li>
+                  <li>Deadline tracker updated — overdue items surface automatically</li>
+                  <li>Session document archived on completion — searchable, versioned, traceable</li>
+                  <li>Designed for recurring sessions — weekly, monthly, or event-triggered</li>
+                </ul>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If your team runs recurring planning sessions and the action items regularly fall through the gap between the meeting and the system, this closes that gap. The session is the input. Execution starts automatically.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -236,6 +463,18 @@ const capabilities = [
       </div>
     </section>
   </main>
+
+  <script>
+    document.querySelectorAll('.cs-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const detail = btn.closest('.cs-item').querySelector('.cs-detail');
+        if (!detail) return;
+        const isOpen = detail.classList.contains('open');
+        detail.classList.toggle('open', !isOpen);
+        btn.textContent = isOpen ? 'Read the full case →' : 'Close ↑';
+      });
+    });
+  </script>
 
   <Footer />
 </Base>

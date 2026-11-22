@@ -3,75 +3,8 @@ export const prerender = true;
 import Base from '../layouts/Base.astro';
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
-import UseCaseCard from '../components/UseCaseCard.astro';
 import CapabilityCard from '../components/CapabilityCard.astro';
 import StackBadge from '../components/StackBadge.astro';
-
-const useCases = [
-  {
-    badge: 'Enterprise Pattern 01',
-    title: 'Cross-Tenant Approval Routing',
-    beforeLabel: 'Before · Manual Email Routing',
-    afterLabel: 'After · Automated Teams-Based Approval',
-    beforeText: 'Approval requests routed manually via email across departments. No visibility into queue depth, response times, or bottlenecks. SLA compliance tracked in a separate spreadsheet updated by hand.',
-    afterText: 'Power Automate routes approvals through Teams adaptive cards. AI Builder categorises request type and assigns the correct approver group automatically. Copilot Studio surfaces SLA status on demand without opening a separate system.',
-    afterHighlight: 'Approval routing errors eliminated. SLA compliance tracked in real time.'
-  },
-  {
-    badge: 'Enterprise Pattern 02',
-    title: 'Structured Data Extraction From Unstructured Documents',
-    beforeLabel: 'Before · Manual Re-Entry',
-    afterLabel: 'After · AI Builder Automated Extraction',
-    beforeText: 'Staff manually read incoming documents and re-enter key fields into SharePoint lists. Processing time 20–30 minutes per document. Transcription errors common. High-volume periods create processing backlogs.',
-    afterText: 'AI Builder reads documents at intake and extracts structured fields directly into Dataverse. Exceptions flagged for human review with a clear reason. Power Automate triggers downstream processes immediately on clean extracted data.',
-    afterHighlight: 'Processing time reduced from 25 minutes to under 2 minutes per document.'
-  },
-  {
-    badge: 'Enterprise Pattern 03',
-    title: 'Policy-Gated Content Assembly',
-    beforeLabel: 'Before · Manual Template Population',
-    afterLabel: 'After · Governed Automated Assembly',
-    beforeText: 'Report templates populated manually from multiple SharePoint libraries. Formatting varies by author. Version control informal. Policy review happens after assembly, creating rework loops when content doesn\'t meet standards.',
-    afterText: 'Copilot Studio assembles documents from approved template fragments based on request parameters. Output version-controlled in SharePoint. Claude reviews assembled content against a policy checklist before release. Non-compliant output blocked at source.',
-    afterHighlight: 'Policy review pass rate on first assembly: 94%.'
-  },
-  {
-    badge: 'Enterprise Pattern 04',
-    title: 'Teams-Triggered Workflow Initiation',
-    beforeLabel: 'Before · Separate System Login Required',
-    afterLabel: 'After · Natural Language Teams Interface',
-    beforeText: 'Workflow initiation requires logging into a separate system. Staff raise requests via email which must be manually translated into system actions. High error rate in translation. No confirmation of what was actually initiated.',
-    afterText: 'Teams bot accepts natural-language requests, extracts intent and parameters, and initiates the correct Power Automate flow. Confirmation and status updates return to the same Teams thread. No context switching. No separate system access required.',
-    afterHighlight: 'Workflow initiation time reduced from 8 minutes to under 60 seconds.'
-  },
-  {
-    badge: 'Enterprise Pattern 05',
-    title: 'Governed AI Summarisation at Scale',
-    beforeLabel: 'Before · Manual Analyst Summaries',
-    afterLabel: 'After · Schema-Bound AI Summarisation',
-    beforeText: 'Analysts manually summarise long reports and meeting transcripts. Summaries inconsistent in format and depth. No audit trail of what was summarised or when. Output quality varies significantly by analyst.',
-    afterText: 'Claude summarises content against a fixed schema ensuring consistent format and depth. Summaries stored with source reference and generation timestamp in SharePoint. Supervisors review and approve before distribution. Full audit trail maintained automatically.',
-    afterHighlight: 'Analyst summarisation time reduced by 70%. Audit trail complete from day one.'
-  },
-  {
-    badge: 'Enterprise Pattern 06',
-    title: 'Exception-Only Human Review',
-    beforeLabel: 'Before · All Items Reviewed Manually',
-    afterLabel: 'After · AI Triage With Human Gates on Exceptions',
-    beforeText: 'All items in a process routed to human reviewers regardless of complexity. High-volume periods create review backlogs. Reviewers fatigued by routine approvals. Genuine exceptions receive less attention because of volume.',
-    afterText: 'AI Builder classifies items by complexity and risk. Routine items processed automatically with a logged rationale. Only exceptions and high-risk items reach human reviewers, accompanied by an AI-prepared briefing covering the reason for escalation.',
-    afterHighlight: 'Human review volume reduced by 65%. Reviewer focus shifted to genuine exceptions.'
-  },
-  {
-    badge: 'Enterprise Pattern 07',
-    title: 'Audit-Ready Process Documentation',
-    beforeLabel: 'Before · Documentation Created After the Fact',
-    afterLabel: 'After · Live Execution Logging With On-Demand Reports',
-    beforeText: 'Process documentation created manually after the fact. Steps recorded from memory. Inconsistencies between documentation and actual execution common. Audit preparation is a multi-week project involving multiple people.',
-    afterText: 'Every workflow execution logged to Dataverse with step timestamps, decision points, and responsible parties. Copilot Studio generates audit-ready process reports on demand from live execution data. Documentation is always current because it is always live.',
-    afterHighlight: 'Audit preparation time reduced from two weeks to same-day.'
-  }
-];
 
 const capabilities = [
   {
@@ -126,26 +59,339 @@ const capabilities = [
       </div>
     </section>
 
-    <!-- Use cases -->
-    <section class="section section-alt">
-      <div class="container section-numbered" data-section-num="01">
-        <div class="section-header">
-          <span class="eyebrow">In practice</span>
-          <h2>Seven enterprise patterns</h2>
-          <p>Each card shows a real enterprise workflow before automation and after. All patterns operate within the Microsoft 365 ecosystem. No external data processing. No new SaaS vendors to onboard.</p>
-        </div>
-        <div class="cards-grid">
-          {useCases.map(uc => (
-            <UseCaseCard
-              badge={uc.badge}
-              title={uc.title}
-              beforeLabel={uc.beforeLabel}
-              afterLabel={uc.afterLabel}
-              beforeText={uc.beforeText}
-              afterText={uc.afterText}
-              afterHighlight={uc.afterHighlight}
-            />
-          ))}
+    <!-- Case Studies -->
+    <section class="section section-numbered" data-section-num="01">
+      <div class="container">
+        <span class="eyebrow">In Practice</span>
+        <h2>Automation patterns that have shipped</h2>
+        <p class="section-sub">Every case below is a live pattern — built, tested, and running in a real environment. Click any card to read the full case.</p>
+        <div class="cs-grid" style="margin-top: 2.5rem;">
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 01 · Communication Operations</span>
+              <h3 class="cs-headline">AI email triage that routes without reading everything</h3>
+              <p class="cs-synopsis">High-volume inboxes classified, routed, and actioned by logic — not by a person reading every subject line.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Outlook</span>
+                <span class="cs-tag">Power Automate</span>
+                <span class="cs-tag">AI Builder</span>
+                <span class="cs-tag">Claude API</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Shared inboxes at scale break the same way every time. Someone reads it. Someone else reads it. Nobody acts because they assumed someone else would. The important ones get buried. The urgent ones arrive during a meeting. Triage is the work, not the actual work.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Every incoming email classified by intent and urgency using Claude API — no keywords, no rules</li>
+                  <li>Classification output written to a structured field, not an unread email</li>
+                  <li>Routing logic runs on classification — right team, right queue, right SLA automatically assigned</li>
+                  <li>Acknowledged immediately — sender gets a confirmation with case reference and expected response time</li>
+                  <li>Human reviewer sees a prepared summary, not the raw email thread</li>
+                  <li>Escalation triggered automatically for high-urgency items — not by someone noticing</li>
+                  <li>Full audit trail: classification rationale, routing decision, response time, resolution outcome</li>
+                </ul>
+                <p class="cs-pull">The inbox problem is not a volume problem. It is a triage problem. Volume just makes the triage problem visible.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If your team manages a shared inbox and the actual problem is "we don't know what to respond to first," this is the architecture that solves it. The classification is the value; everything else is routing.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 02 · Document Intelligence</span>
+              <h3 class="cs-headline">Contracts read, extracted, and checked before anyone opens them</h3>
+              <p class="cs-synopsis">Incoming documents processed at intake — key fields extracted, obligations flagged, exceptions surfaced before human review.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">SharePoint</span>
+                <span class="cs-tag">Power Automate</span>
+                <span class="cs-tag">AI Builder</span>
+                <span class="cs-tag">Claude API</span>
+                <span class="cs-tag">Outlook</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Contracts arrive as PDFs. Someone downloads the PDF. Someone reads it. Someone extracts the key fields into a tracker — by hand. The same fields, extracted from the same section, in the same format, every time. This is not review. This is transcription.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Document received in SharePoint — trigger fires immediately on upload</li>
+                  <li>AI Builder extracts structured fields — parties, dates, values, obligations, termination clauses</li>
+                  <li>Claude reviews extraction against a defined policy checklist — flags non-standard terms</li>
+                  <li>Summary card generated and attached to the document — reviewer opens one page, not thirty</li>
+                  <li>Exceptions routed to legal — standard documents routed to operations</li>
+                  <li>Obligation deadlines written to a calendar — no manual diary entry</li>
+                  <li>Full extraction logged to Dataverse — searchable, reportable, audit-ready</li>
+                  <li>Processing time: under three minutes from upload to summary card</li>
+                </ul>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>Reviewers spend time reviewing, not reading. The legal team sees only the contracts that need legal attention. The obligations calendar is always current. If your contract intake is currently a person with a spreadsheet, this replaces the spreadsheet, not the person.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 03 · Report Automation</span>
+              <h3 class="cs-headline">Management reports that write themselves from live data</h3>
+              <p class="cs-synopsis">Recurring reports assembled from live SharePoint and Dataverse sources — formatted, narrated, and distributed on schedule.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">SharePoint</span>
+                <span class="cs-tag">Power Automate</span>
+                <span class="cs-tag">Excel</span>
+                <span class="cs-tag">Dataverse</span>
+                <span class="cs-tag">Outlook</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Management reporting is the same process every week. Pull the data. Format the table. Write the commentary. Email the distribution list. If the data is late, the report is late. If the person who runs the report is on leave, the report doesn't go out.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Report trigger runs on schedule — time-based or data-availability-based</li>
+                  <li>Data pulled from live SharePoint lists and Dataverse tables — no manual export</li>
+                  <li>Report template populated programmatically — consistent format every time</li>
+                  <li>Variance commentary generated automatically — highlights exceptions against prior period</li>
+                  <li>Formatted output written to SharePoint and distributed via Outlook on schedule</li>
+                  <li>Distribution list managed in a configuration table — no hardcoded recipients</li>
+                  <li>Run log recorded — if the report fails to generate, the owner is notified before distribution time</li>
+                </ul>
+                <p class="cs-pull">If the report is the same process every time, the process should run itself. Human judgement should be reserved for the decisions the report informs.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>Reports go out on time, every time, regardless of who is in the office. If your reporting cycle is currently dependent on a specific person remembering to run it, this removes that single point of failure.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 04 · Onboarding Automation</span>
+              <h3 class="cs-headline">New joiner onboarding that runs without an HR ticket</h3>
+              <p class="cs-synopsis">Account creation, access provisioning, welcome sequences, and day-one checklists — triggered automatically on hire confirmation.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Power Automate</span>
+                <span class="cs-tag">SharePoint</span>
+                <span class="cs-tag">Outlook</span>
+                <span class="cs-tag">Teams</span>
+                <span class="cs-tag">Azure AD</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>New joiner onboarding fails at coordination. IT needs to know before HR tells them. The manager needs access set up before the first day. The new joiner arrives and their account isn't ready, their laptop hasn't been configured, and nobody has sent the welcome email. This happens every time because the process relies on people remembering to trigger other people.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Single trigger: hire record created or updated in HR system to "confirmed"</li>
+                  <li>Azure AD account created automatically — role, department, and group memberships assigned from role template</li>
+                  <li>M365 licence assigned and application access provisioned without IT ticket</li>
+                  <li>Welcome email sent on a configured schedule — not when someone remembers</li>
+                  <li>Manager notified with day-one checklist — structured, not an email thread</li>
+                  <li>Teams onboarding channel created with orientation materials pre-loaded</li>
+                  <li>All steps logged — if any step fails, the owner is notified with the specific failure, not a generic error</li>
+                </ul>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>The new joiner's first day experience is determined by the role template, not by whether the right person sent the right email at the right time. If your onboarding currently requires a checklist that someone has to remember to run, this makes the checklist self-executing.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 05 · Compliance Automation</span>
+              <h3 class="cs-headline">Compliance monitoring that surfaces exceptions before they become incidents</h3>
+              <p class="cs-synopsis">Scheduled checks against policy thresholds — exceptions surfaced, logged, and escalated automatically without manual audit cycles.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">SharePoint</span>
+                <span class="cs-tag">Power Automate</span>
+                <span class="cs-tag">Dataverse</span>
+                <span class="cs-tag">Outlook</span>
+                <span class="cs-tag">Teams</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Compliance monitoring that runs quarterly is not compliance monitoring. It is compliance auditing after the fact. Exceptions that have been accumulating for three months are not exceptions — they are established patterns. By the time the audit runs, remediation is a project, not a correction.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Compliance check runs on schedule — daily, weekly, or triggered by data change</li>
+                  <li>Policy thresholds defined in a configuration table — updatable without touching the flow</li>
+                  <li>Each check produces a structured result — compliant, exception, or unknown</li>
+                  <li>Exceptions written to Dataverse immediately — not held until a report cycle</li>
+                  <li>Responsible owner notified per exception — not a bulk email to a distribution list</li>
+                  <li>Escalation triggered if exception is not resolved within the defined SLA</li>
+                  <li>Compliance dashboard updated in real time — the current state is always visible</li>
+                  <li>Audit report generated on demand from live Dataverse data — always current, never stale</li>
+                </ul>
+                <p class="cs-pull">Compliance monitoring that runs weekly is not compliance monitoring. It is a weekly reminder that something might have gone wrong since last week.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If your compliance process is a periodic audit rather than continuous monitoring, this closes that gap. Exceptions are caught when they happen, not when someone looks. The audit report is a query, not a project.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 06 · Knowledge Management</span>
+              <h3 class="cs-headline">Institutional knowledge that answers questions automatically</h3>
+              <p class="cs-synopsis">A Teams-native bot that answers process questions from your own SharePoint documentation — without IT tickets or searching.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">SharePoint</span>
+                <span class="cs-tag">Copilot Studio</span>
+                <span class="cs-tag">Power Automate</span>
+                <span class="cs-tag">Teams</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Every organisation has documentation that nobody can find. It exists. It is accurate. It is in SharePoint. And every new employee spends their first three months asking experienced colleagues questions that are already answered somewhere in a document they don't know exists. The knowledge is there. The access path is broken.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Copilot Studio bot deployed inside Teams — no new interface to learn</li>
+                  <li>Bot grounded in your own SharePoint knowledge base — answers sourced from your documents, not the internet</li>
+                  <li>Source citation included in every answer — users can verify and navigate to the full document</li>
+                  <li>Questions the bot cannot answer escalated to a named expert — not a generic "I don't know"</li>
+                  <li>Unanswered questions logged — gaps in the knowledge base are surfaced for content owners</li>
+                  <li>Content freshness enforced — bot flags when a source document hasn't been reviewed in N days</li>
+                  <li>Usage metrics available — most common questions, most frequent gaps, most cited documents</li>
+                </ul>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If experienced team members are spending significant time answering questions that are already documented, this redirects that time. The bot answers the documented questions. The experienced colleagues answer the undocumented ones — and those answers become documentation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 07 · Procurement Automation</span>
+              <h3 class="cs-headline">Purchase requests that route, approve, and close without chasing</h3>
+              <p class="cs-synopsis">End-to-end procurement workflow — intake, approval routing, PO generation, and confirmation — running inside M365 without a procurement system.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">SharePoint</span>
+                <span class="cs-tag">Power Automate</span>
+                <span class="cs-tag">Outlook</span>
+                <span class="cs-tag">Dataverse</span>
+                <span class="cs-tag">Teams</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Procurement without a dedicated system defaults to email. Someone sends a request. Someone approves it. Someone creates a PO in a spreadsheet. Someone chases the vendor. Someone confirms delivery. Each step depends on the previous person remembering to trigger the next. The process is the people, not the system.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Intake via SharePoint form — structured data captured at source, no free-text emails</li>
+                  <li>Approval routing based on value threshold and category — right approver, every time</li>
+                  <li>Adaptive card approval in Teams — approver acts without leaving Teams</li>
+                  <li>PO document generated automatically on approval — formatted, numbered, filed</li>
+                  <li>Vendor notification sent on PO generation — consistent format, no manual email</li>
+                  <li>Delivery confirmation triggers closure — PO status updated automatically</li>
+                  <li>Spend report updated in real time — no manual reconciliation at month end</li>
+                  <li>Escalation on unanswered approvals — the system chases, not the requester</li>
+                </ul>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If your procurement process is currently running on email and spreadsheets, this gives you the control and audit trail of a procurement system without the procurement system licence. The workflow is owned by your IT team and runs inside your existing M365 tenant.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-item">
+            <div class="cs-card">
+              <span class="cs-eyebrow">Pattern 08 · Project Operations</span>
+              <h3 class="cs-headline">Project status that updates itself and surfaces what's at risk</h3>
+              <p class="cs-synopsis">Automated status aggregation across active projects — overdue items surfaced, stakeholders notified, reports distributed without manual compilation.</p>
+              <div class="cs-tags">
+                <span class="cs-tag">Planner</span>
+                <span class="cs-tag">Power Automate</span>
+                <span class="cs-tag">SharePoint</span>
+                <span class="cs-tag">Teams</span>
+                <span class="cs-tag">Outlook</span>
+              </div>
+              <button class="cs-toggle">Read the full case →</button>
+            </div>
+            <div class="cs-detail">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Problem</span>
+                <p>Project status reporting is the work nobody has time for but everyone needs. It requires asking people what they did, waiting for responses, compiling the answers, formatting the report, and distributing it — by the time it goes out, it is already out of date. And the people who most need it are the ones who cannot wait for the Friday update.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">What We Built</span>
+                <ul>
+                  <li>Status pulled from Planner tasks on schedule — no manual update required from team members</li>
+                  <li>Overdue and at-risk items identified automatically — based on due date, assigned owner, and completion status</li>
+                  <li>Owner of each at-risk item notified immediately — not in the weekly report</li>
+                  <li>Summary report compiled and distributed on schedule — consistent format, live data</li>
+                  <li>Exceptions escalated to project sponsor before the report goes out — not discovered in the meeting</li>
+                  <li>Report archived to SharePoint — full history searchable, every version timestamped</li>
+                  <li>Dashboard updated in real time — stakeholders can check status without waiting for the report</li>
+                </ul>
+                <p class="cs-pull">A status report that is accurate as of last Friday is not a status report. It is a historical document. The only status report that is useful is one that is current.</p>
+              </div>
+              <hr class="cs-divider">
+              <div class="cs-detail-section">
+                <span class="cs-section-label">The Result</span>
+                <p>If your project reporting is currently a weekly exercise in chasing updates and compiling emails, this removes the compilation entirely. The status is always current because it comes from the tasks, not from the people describing the tasks.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -209,7 +455,7 @@ const capabilities = [
           <a href="/enterprise" class="action-card">
             <span class="action-card-label">In practice</span>
             <h3>Case studies</h3>
-            <p>Seven enterprise automation patterns. Cross-tenant approvals, document extraction, audit-ready logging, governed AI summarisation, exception-only review.</p>
+            <p>Eight enterprise automation patterns. Email triage, document intelligence, compliance monitoring, procurement, project operations — all inside M365.</p>
             <span class="action-card-cta">View all patterns →</span>
           </a>
           <a href="/enterprise" class="action-card">
@@ -228,6 +474,18 @@ const capabilities = [
       </div>
     </section>
   </main>
+
+  <script>
+    document.querySelectorAll('.cs-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const detail = btn.closest('.cs-item').querySelector('.cs-detail');
+        if (!detail) return;
+        const isOpen = detail.classList.contains('open');
+        detail.classList.toggle('open', !isOpen);
+        btn.textContent = isOpen ? 'Read the full case →' : 'Close ↑';
+      });
+    });
+  </script>
 
   <Footer />
 </Base>
