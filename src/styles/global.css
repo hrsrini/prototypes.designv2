@@ -377,6 +377,37 @@ em { font-style: italic; }
   margin-bottom: var(--space-xl);
   font-size: 1.05rem;
 }
+.cta-band-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 640px) {
+  .cta-band-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+.btn-cta-solid {
+  background: #ffffff;
+  color: #3d1a6e;
+  border: none;
+}
+.btn-cta-solid:hover {
+  background: rgba(255,255,255,0.9);
+  transform: translateY(-1px);
+}
+.btn-cta-outline {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.6);
+}
+.btn-cta-outline:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-1px);
+}
 
 /* Hero blueprint grid */
 .hero {
