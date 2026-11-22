@@ -1,9 +1,9 @@
 :root {
-  /* Accent — Violet */
-  --accent:          #5B3CF5;
-  --accent-hover:    #4A30CC;
-  --accent-bg:       #EEE9FE;
-  --accent-text:     #4A30CC;
+  /* Accent — Brand Purple */
+  --accent:          #3d1a6e;
+  --accent-hover:    #311558;
+  --accent-bg:       #ede8f7;
+  --accent-text:     #3d1a6e;
 
   /* Amber */
   --amber:           #F5A623;
@@ -25,7 +25,7 @@
   /* Borders */
   --border:          #E5E3DC;
   --border-light:    #EDEBE5;
-  --border-accent:   rgba(91,60,245,0.25);
+  --border-accent:   rgba(61,26,110,0.25);
 
   /* Before/After card system */
   --before-bg:       #FEF2F2;
@@ -203,11 +203,11 @@ em { font-style: italic; }
 }
 .hero-actions .btn {
   background: transparent;
-  color: #1D4ED8;
-  border: 1.5px solid #1D4ED8;
+  color: #3d1a6e;
+  border: 1.5px solid #3d1a6e;
 }
 .hero-actions .btn:hover {
-  background: #1D4ED8;
+  background: #3d1a6e;
   color: #fff;
   transform: translateY(-1px);
 }
@@ -265,7 +265,7 @@ em { font-style: italic; }
 }
 .use-case-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(91,60,245,0.10), 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 12px 32px rgba(61,26,110,0.10), 0 2px 8px rgba(0,0,0,0.04);
 }
 .uc-header {
   padding: 24px 28px 20px;
@@ -311,7 +311,7 @@ em { font-style: italic; }
 }
 .capability-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(91,60,245,0.08);
+  box-shadow: 0 8px 24px rgba(61,26,110,0.08);
 }
 .capability-card h3 {
   font-size: 1.0rem;
@@ -421,7 +421,7 @@ em { font-style: italic; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(91,60,245,0.07) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(61,26,110,0.07) 1px, transparent 0);
   background-size: 28px 28px;
   pointer-events: none;
   z-index: 0;
@@ -438,7 +438,7 @@ em { font-style: italic; }
   font-family: var(--font-serif);
   font-size: 8rem;
   font-weight: 400;
-  color: rgba(91,60,245,0.05);
+  color: rgba(61,26,110,0.05);
   line-height: 1;
   pointer-events: none;
   user-select: none;
@@ -508,7 +508,7 @@ em { font-style: italic; }
 }
 .track-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(91,60,245,0.12);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(61,26,110,0.12);
 }
 .track-card-label {
   font-family: var(--font-mono);
@@ -588,7 +588,7 @@ em { font-style: italic; }
 }
 .action-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(91,60,245,0.12);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(61,26,110,0.12);
 }
 .action-card-label {
   font-family: var(--font-mono);
@@ -843,8 +843,8 @@ em { font-style: italic; }
   background: var(--accent);
   border-radius: 1px;
 }
-.nav-cta { margin-left: var(--space-md); background: #1D4ED8 !important; }
-.nav-cta:hover { background: #1E40AF !important; }
+.nav-cta { margin-left: var(--space-md); background: #3d1a6e !important; }
+.nav-cta:hover { background: #311558 !important; }
 .nav-right {
   display: flex;
   align-items: center;
