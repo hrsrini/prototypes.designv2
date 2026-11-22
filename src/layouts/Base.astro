@@ -14,6 +14,25 @@ const { title, fullTitle, description = 'AI-led automation consulting for Google
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{fullTitle ?? `${title} · prototypes.design`}</title>
+  <script type="application/ld+json" is:inline>{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Prototypes by Design",
+    "url": "https://prototypes.design",
+    "description": "AI-led automation consulting for Google Workspace and Microsoft 365. Working prototypes that ship to production.",
+    "areaServed": "Worldwide",
+    "serviceType": ["Google Workspace Automation", "Microsoft 365 Automation", "AI-led Process Automation"],
+    "provider": {
+      "@type": "Organization",
+      "name": "NovoUp Technologies",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressCountry": "IN"
+      },
+      "url": "https://novoup.com"
+    }
+  })}</script>
   <meta name="description" content={description} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <meta property="og:title" content={fullTitle ?? `${title} · prototypes.design`} />
