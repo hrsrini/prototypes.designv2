@@ -71,7 +71,7 @@ const capabilities = [
             <div class="cs-card">
               <span class="cs-eyebrow">Pattern 01 · Communication Operations</span>
               <h3 class="cs-headline">AI email triage that routes without reading everything</h3>
-              <p class="cs-synopsis">High-volume inboxes classified, routed, and actioned by logic — not by a person reading every subject line.</p>
+              <p class="cs-synopsis">High-volume inboxes classified, prioritised, and routed automatically — before a human opens a single message.</p>
               <div class="cs-tags">
                 <span class="cs-tag">Outlook</span>
                 <span class="cs-tag">Power Automate</span>
@@ -83,26 +83,26 @@ const capabilities = [
             <div class="cs-detail">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Problem</span>
-                <p>Shared inboxes at scale break the same way every time. Someone reads it. Someone else reads it. Nobody acts because they assumed someone else would. The important ones get buried. The urgent ones arrive during a meeting. Triage is the work, not the actual work.</p>
+                <p>Enterprise inboxes are not manageable at volume. A shared mailbox that receives hundreds of messages per day cannot be triaged by a human at the pace it arrives. Messages get missed. Priority items sit next to noise. Response times suffer because the sorting is manual.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">What We Built</span>
                 <ul>
-                  <li>Every incoming email classified by intent and urgency using Claude API — no keywords, no rules</li>
-                  <li>Classification output written to a structured field, not an unread email</li>
-                  <li>Routing logic runs on classification — right team, right queue, right SLA automatically assigned</li>
-                  <li>Acknowledged immediately — sender gets a confirmation with case reference and expected response time</li>
-                  <li>Human reviewer sees a prepared summary, not the raw email thread</li>
-                  <li>Escalation triggered automatically for high-urgency items — not by someone noticing</li>
-                  <li>Full audit trail: classification rationale, routing decision, response time, resolution outcome</li>
+                  <li>Every inbound message passed to an AI classification layer on arrival</li>
+                  <li>Classification assigns category, priority, and routing destination</li>
+                  <li>High-priority items flagged and surfaced immediately — not buried in arrival order</li>
+                  <li>Routine queries auto-responded with templated replies — no human required</li>
+                  <li>Escalation items routed to named owners with full context attached</li>
+                  <li>Unclassified items held in a review queue — nothing silently dropped</li>
+                  <li>Audit log written for every routing decision — reviewable, correctable</li>
                 </ul>
-                <p class="cs-pull">The inbox problem is not a volume problem. It is a triage problem. Volume just makes the triage problem visible.</p>
+                <p class="cs-pull">The inbox problem is not a volume problem. It's a classification problem. Classification is a job for a system.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Result</span>
-                <p>If your team manages a shared inbox and the actual problem is "we don't know what to respond to first," this is the architecture that solves it. The classification is the value; everything else is routing.</p>
+                <p>If your team manages a shared mailbox at scale and the routing is currently manual — or the response time is suffering because triage takes too long — this is the operational layer that changes that.</p>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ const capabilities = [
             <div class="cs-card">
               <span class="cs-eyebrow">Pattern 02 · Document Intelligence</span>
               <h3 class="cs-headline">Contracts read, extracted, and checked before anyone opens them</h3>
-              <p class="cs-synopsis">Incoming documents processed at intake — key fields extracted, obligations flagged, exceptions surfaced before human review.</p>
+              <p class="cs-synopsis">Incoming documents processed automatically — key fields extracted, obligations flagged, exceptions surfaced.</p>
               <div class="cs-tags">
                 <span class="cs-tag">SharePoint</span>
                 <span class="cs-tag">Power Automate</span>
@@ -124,26 +124,26 @@ const capabilities = [
             <div class="cs-detail">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Problem</span>
-                <p>Contracts arrive as PDFs. Someone downloads the PDF. Someone reads it. Someone extracts the key fields into a tracker — by hand. The same fields, extracted from the same section, in the same format, every time. This is not review. This is transcription.</p>
+                <p>Enterprises receive documents that require extraction and review at volume. Contracts. Certificates. Applications. Submissions. Each one arrives, gets opened by someone, gets reviewed manually, gets key fields noted somewhere. The extraction is repetitive. The review is inconsistent. The errors are invisible until they're not.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">What We Built</span>
                 <ul>
-                  <li>Document received in SharePoint — trigger fires immediately on upload</li>
-                  <li>AI Builder extracts structured fields — parties, dates, values, obligations, termination clauses</li>
-                  <li>Claude reviews extraction against a defined policy checklist — flags non-standard terms</li>
-                  <li>Summary card generated and attached to the document — reviewer opens one page, not thirty</li>
-                  <li>Exceptions routed to legal — standard documents routed to operations</li>
-                  <li>Obligation deadlines written to a calendar — no manual diary entry</li>
-                  <li>Full extraction logged to Dataverse — searchable, reportable, audit-ready</li>
-                  <li>Processing time: under three minutes from upload to summary card</li>
+                  <li>Document arrives in SharePoint or Outlook — trigger fires automatically</li>
+                  <li>AI layer extracts defined fields: parties, dates, values, obligations, special conditions</li>
+                  <li>Extracted data written to a structured record — not stored in the document itself</li>
+                  <li>Consistency check run against expected values or prior records</li>
+                  <li>Exceptions flagged with the specific field and the discrepancy noted</li>
+                  <li>Summary generated for human reviewer — what was found, what needs attention</li>
+                  <li>Original document linked from the record — full traceability</li>
+                  <li>Review queue updated — the human sees only the items that need a decision</li>
                 </ul>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Result</span>
-                <p>Reviewers spend time reviewing, not reading. The legal team sees only the contracts that need legal attention. The obligations calendar is always current. If your contract intake is currently a person with a spreadsheet, this replaces the spreadsheet, not the person.</p>
+                <p>If your team processes incoming documents manually — extracting fields, checking values, flagging exceptions — this reduces that to review and decision. The extraction and the first-pass check run automatically.</p>
               </div>
             </div>
           </div>
@@ -152,7 +152,7 @@ const capabilities = [
             <div class="cs-card">
               <span class="cs-eyebrow">Pattern 03 · Report Automation</span>
               <h3 class="cs-headline">Management reports that write themselves from live data</h3>
-              <p class="cs-synopsis">Recurring reports assembled from live SharePoint and Dataverse sources — formatted, narrated, and distributed on schedule.</p>
+              <p class="cs-synopsis">Scheduled reports generated from live data sources — formatted, distributed, and archived without manual assembly.</p>
               <div class="cs-tags">
                 <span class="cs-tag">SharePoint</span>
                 <span class="cs-tag">Power Automate</span>
@@ -165,26 +165,26 @@ const capabilities = [
             <div class="cs-detail">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Problem</span>
-                <p>Management reporting is the same process every week. Pull the data. Format the table. Write the commentary. Email the distribution list. If the data is late, the report is late. If the person who runs the report is on leave, the report doesn't go out.</p>
+                <p>Every enterprise produces recurring management reports. The data exists. The format is defined. The distribution list is known. And yet someone spends hours every period pulling data from multiple sources, formatting it, and sending it. The process is mechanical. The errors are human.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">What We Built</span>
                 <ul>
-                  <li>Report trigger runs on schedule — time-based or data-availability-based</li>
-                  <li>Data pulled from live SharePoint lists and Dataverse tables — no manual export</li>
-                  <li>Report template populated programmatically — consistent format every time</li>
-                  <li>Variance commentary generated automatically — highlights exceptions against prior period</li>
-                  <li>Formatted output written to SharePoint and distributed via Outlook on schedule</li>
-                  <li>Distribution list managed in a configuration table — no hardcoded recipients</li>
-                  <li>Run log recorded — if the report fails to generate, the owner is notified before distribution time</li>
+                  <li>Data pulled from defined sources on trigger — SharePoint lists, Excel tables, Dataverse records</li>
+                  <li>Calculations run automatically — no manual formula application</li>
+                  <li>Report formatted to the agreed template — headers, sections, figures, all resolved from data</li>
+                  <li>Narrative summary generated by AI where required — context added, not just numbers</li>
+                  <li>Document produced and stored in SharePoint — version-controlled, findable</li>
+                  <li>Distribution triggered on generation — the right recipients get it without a person sending it</li>
+                  <li>Failure alert built in — if the data source is unavailable, the right person is notified before the report is due</li>
                 </ul>
-                <p class="cs-pull">If the report is the same process every time, the process should run itself. Human judgement should be reserved for the decisions the report informs.</p>
+                <p class="cs-pull">If the report is the same process every time, it should not require a person every time.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Result</span>
-                <p>Reports go out on time, every time, regardless of who is in the office. If your reporting cycle is currently dependent on a specific person remembering to run it, this removes that single point of failure.</p>
+                <p>If your team produces recurring reports that require data assembly from multiple sources — and the assembly is currently manual — this takes that work off the schedule permanently.</p>
               </div>
             </div>
           </div>
@@ -193,7 +193,7 @@ const capabilities = [
             <div class="cs-card">
               <span class="cs-eyebrow">Pattern 04 · Onboarding Automation</span>
               <h3 class="cs-headline">New joiner onboarding that runs without an HR ticket</h3>
-              <p class="cs-synopsis">Account creation, access provisioning, welcome sequences, and day-one checklists — triggered automatically on hire confirmation.</p>
+              <p class="cs-synopsis">Provisioning, communication, and checklist completion triggered automatically on hire confirmation.</p>
               <div class="cs-tags">
                 <span class="cs-tag">Power Automate</span>
                 <span class="cs-tag">SharePoint</span>
@@ -206,25 +206,25 @@ const capabilities = [
             <div class="cs-detail">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Problem</span>
-                <p>New joiner onboarding fails at coordination. IT needs to know before HR tells them. The manager needs access set up before the first day. The new joiner arrives and their account isn't ready, their laptop hasn't been configured, and nobody has sent the welcome email. This happens every time because the process relies on people remembering to trigger other people.</p>
+                <p>Enterprise onboarding involves a predictable set of tasks that are consistently done inconsistently. Access provisioning. Equipment requests. Introductory communications. Checklist items. Assigned buddies. Each one requires a person to remember to do it at the right time for the right person. When volume increases, the gaps appear.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">What We Built</span>
                 <ul>
-                  <li>Single trigger: hire record created or updated in HR system to "confirmed"</li>
-                  <li>Azure AD account created automatically — role, department, and group memberships assigned from role template</li>
-                  <li>M365 licence assigned and application access provisioned without IT ticket</li>
-                  <li>Welcome email sent on a configured schedule — not when someone remembers</li>
-                  <li>Manager notified with day-one checklist — structured, not an email thread</li>
-                  <li>Teams onboarding channel created with orientation materials pre-loaded</li>
-                  <li>All steps logged — if any step fails, the owner is notified with the specific failure, not a generic error</li>
+                  <li>Trigger on HRIS record creation or hire confirmation in SharePoint</li>
+                  <li>Provisioning requests generated and routed automatically — access, equipment, accounts</li>
+                  <li>Welcome communication sent on day one trigger — personalised, role-specific, without manual drafting</li>
+                  <li>Onboarding checklist created in SharePoint for the new joiner and their manager</li>
+                  <li>Buddy or peer assigned from a rotation list — no manual coordination</li>
+                  <li>30/60/90 day check-in reminders created in calendar automatically</li>
+                  <li>Status dashboard for HR — all active onboardings, current stage, overdue items visible</li>
                 </ul>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Result</span>
-                <p>The new joiner's first day experience is determined by the role template, not by whether the right person sent the right email at the right time. If your onboarding currently requires a checklist that someone has to remember to run, this makes the checklist self-executing.</p>
+                <p>If your onboarding process relies on a checklist that someone has to remember to work through — or on HR manually triggering each step — this makes the process self-executing. The human judgement steps (decisions, conversations) stay human. The coordination steps don't.</p>
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ const capabilities = [
             <div class="cs-card">
               <span class="cs-eyebrow">Pattern 05 · Compliance Automation</span>
               <h3 class="cs-headline">Compliance monitoring that surfaces exceptions before they become incidents</h3>
-              <p class="cs-synopsis">Scheduled checks against policy thresholds — exceptions surfaced, logged, and escalated automatically without manual audit cycles.</p>
+              <p class="cs-synopsis">Policy checks run automatically against live data — exceptions flagged, escalated, and tracked without manual review.</p>
               <div class="cs-tags">
                 <span class="cs-tag">SharePoint</span>
                 <span class="cs-tag">Power Automate</span>
@@ -246,27 +246,27 @@ const capabilities = [
             <div class="cs-detail">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Problem</span>
-                <p>Compliance monitoring that runs quarterly is not compliance monitoring. It is compliance auditing after the fact. Exceptions that have been accumulating for three months are not exceptions — they are established patterns. By the time the audit runs, remediation is a project, not a correction.</p>
+                <p>Compliance monitoring in an enterprise is a continuous process that is frequently done as a periodic one. By the time the monthly or quarterly review happens, the exception has already occurred. The audit trail is incomplete. The escalation is reactive. The finding is a surprise.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">What We Built</span>
                 <ul>
-                  <li>Compliance check runs on schedule — daily, weekly, or triggered by data change</li>
-                  <li>Policy thresholds defined in a configuration table — updatable without touching the flow</li>
-                  <li>Each check produces a structured result — compliant, exception, or unknown</li>
-                  <li>Exceptions written to Dataverse immediately — not held until a report cycle</li>
-                  <li>Responsible owner notified per exception — not a bulk email to a distribution list</li>
-                  <li>Escalation triggered if exception is not resolved within the defined SLA</li>
-                  <li>Compliance dashboard updated in real time — the current state is always visible</li>
-                  <li>Audit report generated on demand from live Dataverse data — always current, never stale</li>
+                  <li>Policy rules defined as structured checks in Dataverse</li>
+                  <li>Checks run on a schedule against live records — daily or on data change</li>
+                  <li>Exceptions identified at the record level — not at the aggregate level</li>
+                  <li>Severity classification applied automatically — not all exceptions require the same response</li>
+                  <li>Escalation triggered immediately on high-severity exception — not at the next review meeting</li>
+                  <li>Full audit trail written — every check, every result, every escalation, timestamped</li>
+                  <li>Summary report generated for compliance owner — what was checked, what was found, what was escalated</li>
+                  <li>Dashboard for ongoing visibility — exception rate by category, by period, by business unit</li>
                 </ul>
-                <p class="cs-pull">Compliance monitoring that runs weekly is not compliance monitoring. It is a weekly reminder that something might have gone wrong since last week.</p>
+                <p class="cs-pull">Compliance monitoring that runs weekly is not compliance monitoring. It's compliance reporting. The monitoring has to be continuous.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Result</span>
-                <p>If your compliance process is a periodic audit rather than continuous monitoring, this closes that gap. Exceptions are caught when they happen, not when someone looks. The audit report is a query, not a project.</p>
+                <p>If your compliance process involves periodic manual review — and exceptions are discovered after the fact — this moves the detection point earlier. Continuous monitoring does not eliminate exceptions. It eliminates the lag between occurrence and discovery.</p>
               </div>
             </div>
           </div>
@@ -275,7 +275,7 @@ const capabilities = [
             <div class="cs-card">
               <span class="cs-eyebrow">Pattern 06 · Knowledge Management</span>
               <h3 class="cs-headline">Institutional knowledge that answers questions automatically</h3>
-              <p class="cs-synopsis">A Teams-native bot that answers process questions from your own SharePoint documentation — without IT tickets or searching.</p>
+              <p class="cs-synopsis">Internal knowledge base connected to a conversational interface — accurate answers without search and without tickets.</p>
               <div class="cs-tags">
                 <span class="cs-tag">SharePoint</span>
                 <span class="cs-tag">Copilot Studio</span>
@@ -287,25 +287,25 @@ const capabilities = [
             <div class="cs-detail">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Problem</span>
-                <p>Every organisation has documentation that nobody can find. It exists. It is accurate. It is in SharePoint. And every new employee spends their first three months asking experienced colleagues questions that are already answered somewhere in a document they don't know exists. The knowledge is there. The access path is broken.</p>
+                <p>Enterprise knowledge lives in SharePoint. Nobody uses SharePoint to search. They ask a colleague, raise a ticket, or send an email. The colleague answers from memory. The memory is sometimes wrong. The ticket takes three days. The email gets lost. The knowledge exists. The access is broken.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">What We Built</span>
                 <ul>
-                  <li>Copilot Studio bot deployed inside Teams — no new interface to learn</li>
-                  <li>Bot grounded in your own SharePoint knowledge base — answers sourced from your documents, not the internet</li>
-                  <li>Source citation included in every answer — users can verify and navigate to the full document</li>
-                  <li>Questions the bot cannot answer escalated to a named expert — not a generic "I don't know"</li>
-                  <li>Unanswered questions logged — gaps in the knowledge base are surfaced for content owners</li>
-                  <li>Content freshness enforced — bot flags when a source document hasn't been reviewed in N days</li>
-                  <li>Usage metrics available — most common questions, most frequent gaps, most cited documents</li>
+                  <li>SharePoint content indexed as the knowledge source — policies, procedures, FAQs, guides</li>
+                  <li>Copilot Studio agent connected to the index — answers questions from the content, not from training data</li>
+                  <li>Response includes source citation — the specific document and section, not a generated summary</li>
+                  <li>Confidence threshold enforced — low-confidence answers escalate to a human, not silently wrong</li>
+                  <li>Unanswered questions logged — gaps in the knowledge base identified automatically</li>
+                  <li>Content freshness check on a schedule — outdated documents flagged for review</li>
+                  <li>Deployed in Teams — where the questions are already being asked</li>
                 </ul>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Result</span>
-                <p>If experienced team members are spending significant time answering questions that are already documented, this redirects that time. The bot answers the documented questions. The experienced colleagues answer the undocumented ones — and those answers become documentation.</p>
+                <p>If your team is answering the same operational questions repeatedly — by email, by ticket, by message — and the answers exist in a document somewhere, this connects the question to the document. The knowledge team's time goes to maintaining and improving content, not to answering the same question for the 40th time.</p>
               </div>
             </div>
           </div>
@@ -314,7 +314,7 @@ const capabilities = [
             <div class="cs-card">
               <span class="cs-eyebrow">Pattern 07 · Procurement Automation</span>
               <h3 class="cs-headline">Purchase requests that route, approve, and close without chasing</h3>
-              <p class="cs-synopsis">End-to-end procurement workflow — intake, approval routing, PO generation, and confirmation — running inside M365 without a procurement system.</p>
+              <p class="cs-synopsis">End-to-end procurement workflow with structured intake, role-based approval, and automatic PO generation.</p>
               <div class="cs-tags">
                 <span class="cs-tag">SharePoint</span>
                 <span class="cs-tag">Power Automate</span>
@@ -327,26 +327,26 @@ const capabilities = [
             <div class="cs-detail">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Problem</span>
-                <p>Procurement without a dedicated system defaults to email. Someone sends a request. Someone approves it. Someone creates a PO in a spreadsheet. Someone chases the vendor. Someone confirms delivery. Each step depends on the previous person remembering to trigger the next. The process is the people, not the system.</p>
+                <p>Enterprise procurement workflows fail at the coordination layer, not the policy layer. The policy is clear. The approval chain is defined. But requests sit unreviewed because the approver wasn't notified. Or the wrong person approved. Or the PO was never generated because someone forgot. The compliance problem is a coordination problem.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">What We Built</span>
                 <ul>
-                  <li>Intake via SharePoint form — structured data captured at source, no free-text emails</li>
-                  <li>Approval routing based on value threshold and category — right approver, every time</li>
-                  <li>Adaptive card approval in Teams — approver acts without leaving Teams</li>
-                  <li>PO document generated automatically on approval — formatted, numbered, filed</li>
-                  <li>Vendor notification sent on PO generation — consistent format, no manual email</li>
-                  <li>Delivery confirmation triggers closure — PO status updated automatically</li>
-                  <li>Spend report updated in real time — no manual reconciliation at month end</li>
-                  <li>Escalation on unanswered approvals — the system chases, not the requester</li>
+                  <li>Structured intake form in SharePoint — required fields enforced, no incomplete submissions</li>
+                  <li>Routing logic based on value threshold and category — no manual assignment</li>
+                  <li>Approver notified immediately on receipt — not on a daily digest</li>
+                  <li>Reminder and escalation built in — defined SLAs, automatic progression if no response</li>
+                  <li>Approval captured in Dataverse — email reply is not a valid approval mechanism</li>
+                  <li>PO generated automatically on final approval — from the structured intake data, not from manual entry</li>
+                  <li>Supplier notification triggered on PO generation — without a person sending it</li>
+                  <li>Full audit trail from request to PO — every decision, every approver, every timestamp</li>
                 </ul>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Result</span>
-                <p>If your procurement process is currently running on email and spreadsheets, this gives you the control and audit trail of a procurement system without the procurement system licence. The workflow is owned by your IT team and runs inside your existing M365 tenant.</p>
+                <p>If your procurement process is policy-compliant in theory but coordination-dependent in practice — and that dependence creates delays, errors, or audit findings — this removes the coordination dependency. The process runs on logic. The humans provide the decisions.</p>
               </div>
             </div>
           </div>
@@ -355,7 +355,7 @@ const capabilities = [
             <div class="cs-card">
               <span class="cs-eyebrow">Pattern 08 · Project Operations</span>
               <h3 class="cs-headline">Project status that updates itself and surfaces what's at risk</h3>
-              <p class="cs-synopsis">Automated status aggregation across active projects — overdue items surfaced, stakeholders notified, reports distributed without manual compilation.</p>
+              <p class="cs-synopsis">Status tracking automated from task data — progress calculated, risks identified, and stakeholders updated without a status meeting.</p>
               <div class="cs-tags">
                 <span class="cs-tag">Planner</span>
                 <span class="cs-tag">Power Automate</span>
@@ -368,26 +368,26 @@ const capabilities = [
             <div class="cs-detail">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Problem</span>
-                <p>Project status reporting is the work nobody has time for but everyone needs. It requires asking people what they did, waiting for responses, compiling the answers, formatting the report, and distributing it — by the time it goes out, it is already out of date. And the people who most need it are the ones who cannot wait for the Friday update.</p>
+                <p>Project status reporting in an enterprise consumes a disproportionate amount of time relative to its value. Someone aggregates updates from multiple owners. Someone formats them. Someone sends them. The report reflects the state of the project as of the last time someone chased for an update — which is not the same as the current state.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">What We Built</span>
                 <ul>
-                  <li>Status pulled from Planner tasks on schedule — no manual update required from team members</li>
-                  <li>Overdue and at-risk items identified automatically — based on due date, assigned owner, and completion status</li>
-                  <li>Owner of each at-risk item notified immediately — not in the weekly report</li>
-                  <li>Summary report compiled and distributed on schedule — consistent format, live data</li>
-                  <li>Exceptions escalated to project sponsor before the report goes out — not discovered in the meeting</li>
-                  <li>Report archived to SharePoint — full history searchable, every version timestamped</li>
-                  <li>Dashboard updated in real time — stakeholders can check status without waiting for the report</li>
+                  <li>Task completion data pulled from Planner automatically — no manual update required from task owners</li>
+                  <li>Progress calculated at project and workstream level — percentages derived from data, not estimates</li>
+                  <li>Schedule variance calculated — tasks behind schedule identified by day, not by human review</li>
+                  <li>Risk flag triggered automatically when variance exceeds threshold — not at the next status meeting</li>
+                  <li>Status report generated from live data on a schedule — distributed to stakeholders without a person assembling it</li>
+                  <li>Executive summary generated by AI — narrative written from structured data, not by the project manager</li>
+                  <li>Escalation triggered for items at risk of missing milestone — the right person is notified before the milestone is missed</li>
                 </ul>
-                <p class="cs-pull">A status report that is accurate as of last Friday is not a status report. It is a historical document. The only status report that is useful is one that is current.</p>
+                <p class="cs-pull">A status report that is accurate as of last Friday is not a status report. It's a history. Project intelligence has to be live.</p>
               </div>
               <hr class="cs-divider">
               <div class="cs-detail-section">
                 <span class="cs-section-label">The Result</span>
-                <p>If your project reporting is currently a weekly exercise in chasing updates and compiling emails, this removes the compilation entirely. The status is always current because it comes from the tasks, not from the people describing the tasks.</p>
+                <p>If your project reporting cycle requires manual aggregation from multiple owners — and the report is out of date by the time it's distributed — this makes the reporting continuous and automatic. The project manager's time goes to decisions and stakeholder management, not to data aggregation.</p>
               </div>
             </div>
           </div>
