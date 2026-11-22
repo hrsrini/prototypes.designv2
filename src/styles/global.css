@@ -1162,3 +1162,16 @@ em { font-style: italic; }
 .section-link a:hover {
   text-decoration: underline;
 }
+
+/* ── NDA reference line ── */
+.cs-nda {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 1.25rem;
+  letter-spacing: 0.04em;
+}
+.home-nda {
+  text-align: center;
+  margin-bottom: 2rem;
+}
